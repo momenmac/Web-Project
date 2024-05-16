@@ -47,7 +47,7 @@
 
 header {
     padding: 5px 30px;
-    background-color: white;
+    background-color: #efefef;
     position: sticky;
     top:0;
     z-index: 999;
@@ -120,5 +120,5 @@ body{
     display: flex;
 }
 #main{
-    z-index: -1;
-}
+    z-index: -1;}
+
