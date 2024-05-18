@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../CSS/index.css" type="text/css">
   <title>Computers World</title>
+  <link href="../IMG/Logo-icon.png" rel="icon">
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <script src="../Scripts/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
   <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 
 
@@ -23,6 +26,7 @@
         <lord-icon
                 src="https://cdn.lordicon.com/kkvxgpti.json"
                 trigger="hover"
+                colors="primary:#161880"
                 style="width:40px;height:40px">
         </lord-icon>
       </div>
@@ -34,7 +38,7 @@
                 trigger="hover"
                 target=".top-header-right-icons"
                 colors="primary:#FFBC03"
-                style="width:40px;height:40px">
+                style="width:35px;height:35px">
         </lord-icon>
           <div>Wish List</div>
         </a>
@@ -45,32 +49,101 @@
                 trigger="hover"
                 target=".top-header-right-icons"
                 colors="primary:#FFBC03"
-                style="width:40px;height:40px">
+                style="width:35px;height:35px">
         </lord-icon>
+
           <div>Sign in</div>
         </a>
 
 
         <a href="#" class="top-header-right-icons">
+          <div id="cart-button">
         <lord-icon
                 src="https://cdn.lordicon.com/mfmkufkr.json"
                 trigger="hover"
                 target=".top-header-right-icons"
                 colors="primary:#FFBC03"
-                style="width:40px;height:40px;">
+                style="width:35px;height:35px;">
         </lord-icon>
+            <span id="cart-badge">0</span>
+            </div>
           <div>Cart</div>
         </a>
-
       </div>
-
-
-
-
     </div>
 
     <div id="down-header">
+      <div class="down-header-container">
+        <div class="logo-fixed"></div>
+        <div class="navPages-container"></div>
+          <nav class="navPages">
+            <ul class="navPages-list" data-level-list="1">
+              <li class="navPages-list-icons active-navbar"><a href="index.html">Home
+                <span class="test">New</span></a> </li>
+              <li class="navPages-list-icons">
+                <a href="#">
+                Console&nbsp;
+                <lord-icon
+                      src="https://cdn.lordicon.com/rmkahxvq.json"
+                      trigger="hover"
+                      target=".navPages-list-icons"
+                      state="hover-arrow-down-2"
+                      colors="primary:#ffffff"
+                      style="width:20px;height:20px">
+                </lord-icon></a></li>
+              <li class="navPages-list-icons">
+                <a href="#">
+                Computers&nbsp;
+                <lord-icon
+                        src="https://cdn.lordicon.com/rmkahxvq.json"
+                        trigger="hover"
+                        target=".navPages-list-icons"
+                        state="hover-arrow-down-2"
+                        colors="primary:#ffffff"
+                        style="width:20px;height:20px">
+                </lord-icon></a></li>
 
+              <li class="navPages-list-icons">
+                <a href="#">
+                  Cards&nbsp;
+                  <lord-icon
+                          src="https://cdn.lordicon.com/rmkahxvq.json"
+                          trigger="hover"
+                          target=".navPages-list-icons"
+                          state="hover-arrow-down-2"
+                          colors="primary:#ffffff"
+                          style="width:20px;height:20px">
+                  </lord-icon></a> </li></a></li>
+
+              <li class="navPages-list-icons">
+                <a href="#">
+                Accessories&nbsp;
+                <lord-icon
+                        src="https://cdn.lordicon.com/rmkahxvq.json"
+                        trigger="hover"
+                        target=".navPages-list-icons"
+                        state="hover-arrow-down-2"
+                        colors="primary:#ffffff"
+                        style="width:20px;height:20px">
+                </lord-icon>
+                  <span class="test" id="accessories-badge">Sale</span></a> </li></a></li>
+              <li class="navPages-list-icons">
+                <a href="#">
+                About Us&nbsp;
+                <lord-icon
+                        src="https://cdn.lordicon.com/rmkahxvq.json"
+                        trigger="hover"
+                        target=".navPages-list-icons"
+                        state="hover-arrow-down-2"
+                        colors="primary:#ffffff"
+                        style="width:20px;height:20px">
+                </lord-icon></a></li>
+
+            </ul>
+          </nav>
+        <div class="header-bottom-right">lol</div>
+        <div class="header-bottom-fixed"></div>
+      </div>
     </div>
   </div>
 
@@ -78,6 +151,77 @@
 
   </div>
 </header>
+<section id="slide-show">
+  <div class="slideshow-container">
+    <a href="#">
+    <div class="mySlides fade" style="background-image: url('../IMG/slideshow-home1-2.jpg');">
+      <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+    </a>
+
+    <a href="#">
+    <div class="mySlides fade" style="background-image: url('../IMG/slideshow-home1-1.jpg');">
+      <div class="slides-captions">
+        Huge Savings on UHD Televisions
+        <div class="slides-captions2">
+          Sale up to 70% off on selected items*<br>
+        </div>
+        <span>Shop Now</span>
+
+      </div>
+      <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+    </a>
+
+    <a href="#">
+    <div class="mySlides fade" style="background-image: url('../IMG/slideshow-home1-3.jpg');">
+      <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+    </a>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</section>
+
+<section class="main">
+  <div class="shipping-custom-block-container">
+  <div class="shipping-custom-block">
+
+    <div class="custom-block-item">
+      <div id="animationContainer" style="width: 65px; height: 65px;"><script src="../IMG/animatedDeliveryIcons.js"></script></div>
+      <div>Fast Delivery</div>
+    </div>
+    <div class="line">|</div>
+    <div class="custom-block-item">
+      <div id="animationContainer1" style="width: 65px; height: 65px;"><script src="../IMG/animatedCashIcons.js"></script></div>
+      <div>Cash on Delivery</div>
+    </div>
+    <div class="line2">|</div>
+    <div class="custom-block-item">
+      <div id="animationContainer2" style="width: 55px; height: 55px;"><script src="../IMG/animatedThumbIcons.js"></script></div>
+      <div>Longest Warranties</div>
+    </div>
+  </div>
+
+
+  </div>
+</section>
+
+
 
 </body>
 </html>
