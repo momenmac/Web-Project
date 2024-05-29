@@ -56,3 +56,13 @@ slideshowContainer.addEventListener('mouseleave', function() {
         plusSlides(1);
     }, 4000);
 });
+// animation for the gallery
+window.addEventListener('scroll', function() {
+    const gallery = document.getElementById('gallery-home-big');
+    const galleryPosition = gallery.getBoundingClientRect().top + window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    if (window.scrollY + windowHeight >= galleryPosition) {
+        gallery.classList.add('show');
+    }
+});
