@@ -1,9 +1,9 @@
 let slideIndex = 1;
 let slideInterval;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     showSlides(slideIndex);
-    slideInterval = setInterval(function() {
+    slideInterval = setInterval(function () {
         plusSlides(1);
     }, 4000);
 });
@@ -34,8 +34,12 @@ function showSlides(n) {
     }
 
     // Show the current slide
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
+    if (n > slides.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
     slides[slideIndex - 1].style.display = "block";
 
     // Add "active" class to the corresponding dot in this slide's dot container
@@ -44,25 +48,64 @@ function showSlides(n) {
 }
 
 
-
 const slideshowContainer = document.querySelector('.slideshow-container');
 
-slideshowContainer.addEventListener('mouseenter', function() {
-    clearInterval(slideInterval);
-});
-
-slideshowContainer.addEventListener('mouseleave', function() {
-    slideInterval = setInterval(function() {
-        plusSlides(1);
-    }, 4000);
-});
+// slideshowContainer.addEventListener('mouseenter', function() {
+//     clearInterval(slideInterval);
+// });
+//
+// slideshowContainer.addEventListener('mouseleave', function() {
+//     slideInterval = setInterval(function() {
+//         plusSlides(1);
+//     }, 4000);
+// });
 // animation for the gallery
-window.addEventListener('scroll', function() {
-    const gallery = document.getElementById('gallery-home-big');
-    const galleryPosition = gallery.getBoundingClientRect().top + window.scrollY;
-    const windowHeight = window.innerHeight;
+document.addEventListener("DOMContentLoaded", function () {
+    window.onscroll = function () {
+        checkSticky();
+    };
+    var downHeader = document.getElementById("down-header");
+    var sticky = downHeader.offsetTop;
 
-    if (window.scrollY + windowHeight >= galleryPosition) {
-        gallery.classList.add('show');
+    function checkSticky() {
+        if (window.pageYOffset >= sticky) {
+            downHeader.classList.add("sticky");
+        } else {
+            downHeader.classList.remove("sticky");
+        }
     }
 });
+
+
+//animation gallery
+document.addEventListener('DOMContentLoaded', () => {
+    const smallGalleryItems = document.querySelectorAll('.gallery-home-small');
+    const bigGalleryItems = document.querySelectorAll('#gallery-home-big');
+
+    const handleScroll = () => {
+        const windowHeight = window.innerHeight;
+        const revealPoint = 150;
+
+        smallGalleryItems.forEach(item => {
+            const itemTop = item.getBoundingClientRect().top;
+            if (itemTop < windowHeight - revealPoint) {
+                item.classList.add('in-view');
+            } else {
+                item.classList.remove('in-view');
+            }
+        });
+
+        bigGalleryItems.forEach(item => {
+            const itemTop = item.getBoundingClientRect().top;
+            if (itemTop < windowHeight - revealPoint) {
+                item.classList.add('in-view');
+            } else {
+                item.classList.remove('in-view');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Trigger the function initially in case elements are already in view
+});
+//animation gall
