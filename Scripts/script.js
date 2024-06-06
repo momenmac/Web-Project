@@ -79,6 +79,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //animation gallery
 document.addEventListener('DOMContentLoaded', () => {
+
+    const navIcons = document.querySelectorAll('.navPages-list-icons');
+    const overlay = document.querySelector('.overlay-dark');
+
+    navIcons.forEach((icon, index) => {
+        if (index === 0 ||index === 5) return; // Skip the first element
+
+        icon.addEventListener('mouseenter', function () {
+            overlay.style.display = 'block';
+            document.body.classList.add('no-scroll');
+        });
+
+        icon.addEventListener('mouseleave', function () {
+            overlay.style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        });
+    });
+
+
     const smallGalleryItems = document.querySelectorAll('.gallery-home-small');
     const bigGalleryItems = document.querySelectorAll('#gallery-home-big');
 
