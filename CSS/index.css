@@ -24,7 +24,8 @@ body{
 header{
     background-color: var(--primary) ;
     transition: 0.3s ease;
-    z-index: 999;
+    position: relative;
+    z-index: 99;
 }
 #top-header{
     display: flex;
@@ -193,6 +194,10 @@ header{
     text-decoration: none;
     list-style: none;
 }
+.navPages-hidden{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.33);
+
+}
 .navPages-list-icons .navPages-hidden {
     display: block;
     width: 100%;
@@ -206,7 +211,7 @@ header{
     /*bottom: -21px;*/
 }
 .navPages-hidden .transparent{
-    height: 15px;
+    height: 16px;
     width: 100%;
     color: transparent;
 }
@@ -239,7 +244,46 @@ header{
     transform: translateY(0px);
 
 }
+.cart-right-panel.sticky{
+    padding-top: 0;
+}
+.cart-right-panel{
+    display: flex;
+    position: fixed;
+    right:0;
+    height: 100vw;
+    content: " ";
+    background-color: white;
+    z-index: 2;
+    top:77px ;
+    width: 500px;
+    padding-top: 100px;
+    transition: 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    padding-right: 20px;
+}
+.cart-right-panel b{
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+}
 
+.cart-button:hover{
+
+}
+
+.display-cart{
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s ease;
+    transform: translateX(0px);
+}
+
+.main{
+    position: relative;
+}
 .navPages-list-icons:hover{
 
 }
@@ -512,7 +556,7 @@ ul {
     margin-right: auto;
     background-color: white;
     max-width: 1400px;
-    padding: 0px  0px;
+    padding: 0  0;
 }
 .shipping-custom-block-container{
     background-color: #ffffff;
@@ -700,7 +744,7 @@ main{
 
  .category-card:hover{
     transform: scale(1.03);
-    box-shadow: 0.5px 1px 5px rgba(2, 2, 2, 0.37);
+    box-shadow: 1px 1px 5px rgba(2, 2, 2, 0.37);
 }
 .product-grid::after {
     content: "";
@@ -739,7 +783,7 @@ a{
 
 .show-more:hover{
     transform: scale(1.03);
-    box-shadow: 0.5px -1px 5px rgba(2, 2, 2, 0.22);
+    box-shadow: 1px -1px 5px rgba(2, 2, 2, 0.22);
 }
 
 .get-offers-div{

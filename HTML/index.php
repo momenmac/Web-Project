@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +15,7 @@
 
 </head>
 <body>
+
 <header id="header">
   <div id="pc-header">
     <div id="top-header">
@@ -56,7 +59,7 @@
         </a>
 
 
-        <a href="#" class="top-header-right-icons">
+        <a href="javascript:showCartPanel()" class="top-header-right-icons">
           <div class="cart-button">
         <lord-icon
                 src="https://cdn.lordicon.com/mfmkufkr.json"
@@ -80,6 +83,8 @@
   </div>
 </header>
 <div id="down-header">
+
+
   <div class="logo-fixed">
     <a href="index.html"><img id="logo-image2" src="../IMG/Logo.png" alt="Computers World Logo"></a>    </div>
   <div class="navPages-container"></div>
@@ -257,7 +262,6 @@
             </div>
           </div>
         </div>
-        </li></a>
         </li>
 
         <li class="navPages-list-icons">
@@ -271,10 +275,65 @@
                     colors="primary:#ffffff"
                     style="width:20px;height:20px">
             </lord-icon>
-            <span class="test" id="accessories-badge">Sale</span></a> </li></a></li>
+            <span class="test" id="accessories-badge">Sale</span></a>
+          <div class="navPages-hidden">
+            <div class="transparent">.</div>
+            <div class="navPages-hidden-container">
+              <div class="navPages-hidden-container-inside">
+                <div class="navPages-hidden-container-inside-top">
+                  <div class="col1">
+                    <div><a href="#"><b>Office</b></a></div>
+                    <a href="#"><div>Desks</div></a>
+                    <a href="#"><div>Chairs</div></a>
+                    <a href="#"><div>Printers</div></a>
+                    <a href="#"><div>Routers</div></a>
+                    <a href="#"><div>Bags</div></a>
+                  </div>
+
+                  <div class="col1">
+                    <div><a href="#"><b>Phones</b></a></div>
+                    <a href="#"><div>Chargers</div></a>
+                    <a href="#"><div>Cases</div></a>
+                    <a href="#"><div>Headphones</div></a>
+                    <a href="#"><div>Car phone Accessories</div></a>
+                  </div>
+
+                  <div class="col1">
+                    <div><a href="#"><b>PC Accessories</b></a></div>
+                    <a href="#"><div>UPS</div></a>
+                    <a href="#"><div>External Cables</div></a>
+                    <a href="#"><div>External Hard Drives</div></a>
+                    <a href="#"><div>Drawing Boards</div></a>
+                    <a href="#"><div>Adapters & Hubs</div></a>
+                  </div>
+
+
+                  <div class="col1">
+                    <div><a href="#"><b>Others</b></a></div>
+                    <a href="#"><div>TVs</div></a>
+                    <a href="#"><div>Mounts & Arms</div></a>
+                    <a href="#"><div>Cameras</div></a>
+                    <a href="#"><div>Software</div></a>
+                  </div>
+
+
+
+                </div>
+                <div class="navPages-hidden-container-inside-bottom">
+                  <img src="../IMG/Accessories1.jpg">
+                  <img src="../IMG/Accessories2.jpg">
+                  <img src="../IMG/Accessories3.jpg">
+                  <img src="../IMG/Accessories4.jpg">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </li>
         <li class="navPages-list-icons">
           <a href="#">
-            About Us&nbsp;
+            About&nbsp;
             <lord-icon
                     src="https://cdn.lordicon.com/rmkahxvq.json"
                     trigger="hover"
@@ -282,7 +341,24 @@
                     state="hover-arrow-down-2"
                     colors="primary:#ffffff"
                     style="width:20px;height:20px">
-            </lord-icon></a></li>
+            </lord-icon></a>
+          <div class="navPages-hidden" style="width: 170px; left:auto;">
+            <div class="transparent">.</div>
+            <div class="navPages-hidden-container" style="height:auto; gap: 0; display: block">
+              <div class="navPages-hidden-container-inside">
+                <div class="navPages-hidden-container-inside-top" style="width: 100%; padding-left: 32px; padding-right: 0; margin-top: 0">
+                  <div class="col1" style="width: 100%">
+                    <a href="#"><div>About Us</div></a>
+                    <a href="#"><div>Contact Us</div></a>
+                    <a href="#"><div>Our team</div></a>
+                    <a href="#"><div>Location</div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </li>
 
       </ul>
     </nav>
@@ -312,7 +388,7 @@
       </a>
 
 
-      <a href="#" class="top-header-right-icons">
+      <a href="javascript:showCartPanel()" class="top-header-right-icons">
         <div class="cart-button">
           <lord-icon
                   src="https://cdn.lordicon.com/mfmkufkr.json"
@@ -327,8 +403,14 @@
     </div>
 
   </div>
+
 </div>
+<div class="cart-right-panel">
+    <b>CART</b>
+</div>
+
 <div class="overlay-dark"></div>
+
 <main>
 
   <section id="slide-show">
@@ -528,7 +610,6 @@
     </div>
   </div>
   </div>
-
 </main>
 <footer>
   <div class="footer-container">
@@ -548,16 +629,16 @@
       <a href="#">Computers</a><br>
       <a href="#">Cards</a><br>
       <a href="#">Accessories</a><br>
-      <a href="#">About Us</a><br>
+      <a href="#">About</a><br>
     </div>
     <div class="navbar-footer">
       <a href="#">Help</a><br>
       <a href="#">Contact Us</a><br>
       <div>
-        <a href="http://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="http://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="http://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="http://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
         <a href="https://web.telegram.org" target="_blank"><i class="fa-brands fa-telegram"></i></a>
         </div><br>
 
