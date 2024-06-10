@@ -66,44 +66,42 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     var downHeader = document.getElementById("down-header");
     var cart = document.getElementsByClassName("cart-right-panel").item(0);
+    var loginPanel = document.querySelectorAll(".login-panel").item(0);
     var sticky = downHeader.offsetTop;
 
     function checkSticky() {
         if (window.pageYOffset >= sticky) {
             downHeader.classList.add("sticky");
             cart.classList.add("sticky")
+            loginPanel.classList.add("sticky");
         } else {
             downHeader.classList.remove("sticky");
-            cart.classList.remove("sticky")
+            cart.classList.remove("sticky");
+            loginPanel.classList.remove("sticky");
         }
     }
 });
-
-function showCartPanel(){
-    const cartPanel = document.querySelectorAll('.cart-right-panel').item(0);
-    cartPanel.classList.add('display-cart');
-    const overlay = document.querySelector('.overlay-dark');
-    overlay.style.display = 'block';
-    document.body.classList.add('no-scroll');
+function showSingUp(){
 
 }
 
 
+
+
 //animation gallery
 document.addEventListener('DOMContentLoaded', () => {
-
     const navIcons = document.querySelectorAll('.navPages-list-icons');
     const overlay = document.querySelector('.overlay-dark');
     const cartPanel = document.querySelectorAll('.cart-right-panel').item(0);
-
+    const loginPanel = document.querySelectorAll('.login-panel').item(0);
     overlay.addEventListener('click', function(){
         overlay.style.display = 'none';
         cartPanel.classList.remove('display-cart');
+        loginPanel.classList.remove('display-login');
         document.body.classList.remove('no-scroll');
 
 
     })
-
 
     navIcons.forEach((icon, index) => {
         if (index === 0 ||index === 5) return; // Skip the first element

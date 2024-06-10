@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +6,23 @@
   <title>Computers World</title>
   <link href="../IMG/Logo-icon.png" rel="icon">
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
-  <script src="../Scripts/script.js"></script>
+  <script src="../Scripts/index.js"></script>
+    <script src="../Scripts/global.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
   <script src="https://kit.fontawesome.com/64a3783f0c.js" crossorigin="anonymous"></script>
 
 
 </head>
 <body>
+<?php
+include ("../Server/connection.php")
+?>
 
 <header id="header">
   <div id="pc-header">
     <div id="top-header">
       <div id="top-header-left">
-        <a href="index.html"><img id="logo-image" src="../IMG/Logo.png" alt="Computers World Logo"></a>
+        <a href="index.php"><img id="logo-image" src="../IMG/Logo.png" alt="Computers World Logo"></a>
       </div>
       <div id="top-header-middle">
         <form id="search-form">
@@ -46,7 +48,7 @@
           <div>Wish List</div>
         </a>
 
-        <a href="#" class="top-header-right-icons">
+        <a href="javascript:showLoginPanel()" class="top-header-right-icons">
         <lord-icon
                 src="https://cdn.lordicon.com/kthelypq.json"
                 trigger="hover"
@@ -86,14 +88,14 @@
 
 
   <div class="logo-fixed">
-    <a href="index.html"><img id="logo-image2" src="../IMG/Logo.png" alt="Computers World Logo"></a>    </div>
+    <a href="index.php"><img id="logo-image2" src="../IMG/Logo.png" alt="Computers World Logo"></a>    </div>
   <div class="navPages-container"></div>
 
   <div class="down-header-container">
     <nav class="navPages">
 
       <ul class="navPages-list" data-level-list="1">
-        <li class="navPages-list-icons active-navbar"><a href="index.html">Home
+        <li class="navPages-list-icons active-navbar"><a href="index.php">Home
           <span class="test">New</span></a> </li>
         <li class="navPages-list-icons">
           <a href="#">
@@ -377,7 +379,7 @@
         </lord-icon>
       </a>
 
-      <a href="#" class="top-header-right-icons">
+      <a href="javascript:showLoginPanel()" class="top-header-right-icons">
         <lord-icon
                 src="https://cdn.lordicon.com/kthelypq.json"
                 trigger="hover"
@@ -407,6 +409,28 @@
 </div>
 <div class="cart-right-panel">
     <b>CART</b>
+</div>
+
+<div class="login-panel">
+    <b>Sign in</b><br>
+    <div class="login-panel-container">
+        <form method="post" action="index.php">
+            <label>
+                Username<br>
+                <input type="text" maxlength="50" name="username" placeholder="Enter your username"><br>
+            </label>
+            <label>
+                Password<br>
+                <input type="password" name="password" maxlength="50">
+            </label>
+            <input type="submit" name="signInButton" value="Sign in"><br>
+            <button type="button" onclick="document.querySelector('.login-panel-container').style.display = 'none'" style="background-color: var(--secondary); color: white">Sign Up</button>
+
+        </form>
+        <br>
+
+    </div>
+
 </div>
 
 <div class="overlay-dark"></div>
@@ -481,18 +505,18 @@
 
   <div id="gallery-home">
     <div id="gallery-home-small-container">
-      <a href="index.html" class="gallery-home-small">
+      <a href="index.php" class="gallery-home-small">
         <img src="../IMG/gallery-small1.jpg">
       </a>
-      <a href="index.html" class="gallery-home-small">
+      <a href="index.php" class="gallery-home-small">
         <img src="../IMG/gallery-small2.jpg">
       </a>
-      <a href="index.html" class="gallery-home-small">
+      <a href="index.php" class="gallery-home-small">
         <img src="../IMG/gallery-small3.jpg">
       </a>
     </div>
     <div id="gallery-home-big-container">
-      <a href="index.html" id="gallery-home-big">
+      <a href="index.php" id="gallery-home-big">
         <img src="../IMG/gallery-big.png">
       </a>
     </div>
@@ -584,32 +608,72 @@
   </div>
 </section>
 </div>
-  <div class="get-offers-div-container">
-  <div class="get-offers-div">
-    <div>
-    <lord-icon
-            src="https://cdn.lordicon.com/nzixoeyk.json"
-            trigger="loop"
-            colors="primary:#ffffff"
-            style="width:40px;height:40px">
-    </lord-icon>
+    <div class="feature-products-container">
+
+            <div class="title">
+                <h2>Featured <b>Products</b></h2>
+            </div>
+        <?php
+        include ("../Server/get_featured_products.php")?>
+
+
+        <div class="feature-products-cards-container">
+            <?php while ($row = $featured_products->fetch_assoc()){?>
+                    <div class="product-card">
+                        <?php if ($row['product_special_offer']>0){?>
+                        <div class="badge">Sale</div>
+                        <?php }?>
+                        <div class="product-tumb">
+                            <img src="../Server/ProductsImages/<?php echo $row['product_image']?>" alt="">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-catagory"><?php echo $row['product_category']?></span>
+                            <h4><a href="singleProduct.php?product_id=<?php echo $row['product_id']?>"><?php echo $row ['product_name']?></a></h4>
+                            <div class="product-bottom-details">
+                                <div class="product-price">
+                                    <?php if ($row['product_special_offer']>0){?>
+                                    <small>₪<?php echo $row['product_price']?><br></small>
+                                    <?php }?>
+                                    ₪<?php echo $row['product_price']- $row['product_special_offer']?>
+                                </div>
+                                <div class="product-links">
+                                    <a href=""><i class="fa fa-heart"></i></a>
+                                    <a href=""><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <?php }?>
+
     </div>
-    <div>
-      Sign up to Newsletter
     </div>
-    <div>
-      ...and be the first to receive Special Offers
-    </div>
-    <div>
+    <div class="get-offers-div-container">
+        <div class="get-offers-div">
+            <div>
+                <lord-icon
+                        src="https://cdn.lordicon.com/nzixoeyk.json"
+                        trigger="loop"
+                        colors="primary:#ffffff"
+                        style="width:40px;height:40px">
+                </lord-icon>
+            </div>
+            <div>
+                Sign up to Newsletter
+            </div>
+            <div>
+                ...and be the first to receive Special Offers
+            </div>
+            <div>
       <span>
         <form action="">
           <input type="email" placeholder="Enter your email address">
           <input type="submit" value="Subscribe" id="">
         </form>
       </span>
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
+
 </main>
 <footer>
   <div class="footer-container">
