@@ -17,3 +17,25 @@ function showCartPanel(){
     document.body.classList.add('no-scroll');
 
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    window.onscroll = function () {
+        checkSticky();
+    };
+    var downHeader = document.getElementById("down-header");
+    var cart = document.getElementsByClassName("cart-right-panel").item(0);
+    var loginPanel = document.querySelectorAll(".login-panel").item(0);
+    var sticky = downHeader.offsetTop;
+
+    function checkSticky() {
+        if (window.pageYOffset >= sticky) {
+            downHeader.classList.add("sticky");
+            cart.classList.add("sticky")
+            loginPanel.classList.add("sticky");
+        } else {
+            downHeader.classList.remove("sticky");
+            cart.classList.remove("sticky");
+            loginPanel.classList.remove("sticky");
+        }
+    }
+});

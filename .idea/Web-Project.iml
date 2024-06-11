@@ -8,5 +8,6 @@
     <orderEntry type="library" name="@popperjs/core" level="application" />
     <orderEntry type="library" name="64a3783f0c" level="application" />
     <orderEntry type="library" name="lordicon" level="application" />
+    <orderEntry type="library" name="bodymovin" level="application" />
   </component>
 </module>

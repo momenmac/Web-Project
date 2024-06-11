@@ -60,27 +60,27 @@ const slideshowContainer = document.querySelector('.slideshow-container');
 //     }, 4000);
 // });
 // animation for the gallery
-document.addEventListener("DOMContentLoaded", function () {
-    window.onscroll = function () {
-        checkSticky();
-    };
-    var downHeader = document.getElementById("down-header");
-    var cart = document.getElementsByClassName("cart-right-panel").item(0);
-    var loginPanel = document.querySelectorAll(".login-panel").item(0);
-    var sticky = downHeader.offsetTop;
-
-    function checkSticky() {
-        if (window.pageYOffset >= sticky) {
-            downHeader.classList.add("sticky");
-            cart.classList.add("sticky")
-            loginPanel.classList.add("sticky");
-        } else {
-            downHeader.classList.remove("sticky");
-            cart.classList.remove("sticky");
-            loginPanel.classList.remove("sticky");
-        }
-    }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//     window.onscroll = function () {
+//         checkSticky();
+//     };
+//     var downHeader = document.getElementById("down-header");
+//     var cart = document.getElementsByClassName("cart-right-panel").item(0);
+//     var loginPanel = document.querySelectorAll(".login-panel").item(0);
+//     var sticky = downHeader.offsetTop;
+//
+//     function checkSticky() {
+//         if (window.pageYOffset >= sticky) {
+//             downHeader.classList.add("sticky");
+//             cart.classList.add("sticky")
+//             loginPanel.classList.add("sticky");
+//         } else {
+//             downHeader.classList.remove("sticky");
+//             cart.classList.remove("sticky");
+//             loginPanel.classList.remove("sticky");
+//         }
+//     }
+// });
 function showSingUp(){
 
 }
@@ -121,30 +121,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const smallGalleryItems = document.querySelectorAll('.gallery-home-small');
     const bigGalleryItems = document.querySelectorAll('#gallery-home-big');
 
-    const handleScroll = () => {
-        const windowHeight = window.innerHeight;
-        const revealPoint = 150;
-
-        smallGalleryItems.forEach(item => {
-            const itemTop = item.getBoundingClientRect().top;
-            if (itemTop < windowHeight - revealPoint) {
-                item.classList.add('in-view');
-            } else {
-                item.classList.remove('in-view');
-            }
-        });
-
-        bigGalleryItems.forEach(item => {
-            const itemTop = item.getBoundingClientRect().top;
-            if (itemTop < windowHeight - revealPoint) {
-                item.classList.add('in-view');
-            } else {
-                item.classList.remove('in-view');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Trigger the function initially in case elements are already in view
+    // const handleScroll = () => {
+    //     const windowHeight = window.innerHeight;
+    //     const revealPoint = 150;
+    //
+    //     smallGalleryItems.forEach(item => {
+    //         const itemTop = item.getBoundingClientRect().top;
+    //         if (itemTop < windowHeight - revealPoint) {
+    //             item.classList.add('in-view');
+    //         } else {
+    //             item.classList.remove('in-view');
+    //         }
+    //     });
+    //
+    //     bigGalleryItems.forEach(item => {
+    //         const itemTop = item.getBoundingClientRect().top;
+    //         if (itemTop < windowHeight - revealPoint) {
+    //             item.classList.add('in-view');
+    //         } else {
+    //             item.classList.remove('in-view');
+    //         }
+    //     });
+    // };
+    //
+    // window.addEventListener('scroll', handleScroll);
+    // handleScroll(); // Trigger the function initially in case elements are already in view
 });
 //animation gall

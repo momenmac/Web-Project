@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('no-scroll');
         });
     });
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Trigger the function initially in case elements are already in view
 });
+
+
