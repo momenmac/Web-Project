@@ -22,6 +22,7 @@
 <?php
 
 if(isset($_GET['product_id'])){
+    $pid = $_GET['product_id'];
     include ('../Server/connection.php');
     $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
     $stmt->bind_param("i", $_GET['product_id']);
@@ -29,10 +30,40 @@ if(isset($_GET['product_id'])){
     $product = $stmt->get_result();
 
 }
+else if (isset($_POST['addToCart'])) {
+        include ("../Server/connection.php");
+
+        $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+        $stmt->bind_param("i", $_POST['product_id_main']);
+        $pid = $_POST['product_id_main'];
+        $stmt->execute() ;
+        $product = $stmt->get_result();
+        $product2 = [
+            'product_image' => $_POST['product_image'],
+            'product_name' => $_POST['product_name'],
+            'product_price' => $_POST['product_price'],
+            'product_id' => $_POST['product_id'],
+            'product_special_offer' => $_POST['product_special_offer'],
+            'product_category' => $_POST['product_category'],
+            'quantity_in_stock' => $_POST['quantity_in_stock'],
+            'product_quantity'=> 1
+        ];
+
+
+    if (!isset($_SESSION['cart'][$_POST['product_id']])) {
+            $_SESSION['cart'][$_POST['product_id']] = $product2;
+        }
+        else{
+            $_SESSION['cart'][$_POST['product_id']]['product_quantity'] += 1;
+        }
+
+}
 else{
-    echo "test";
     header('location: index.php');
 }
+
+
+
 include('header.php');
 ?>
 <script>
@@ -138,32 +169,48 @@ include('header.php');
 
 
             <div class="feature-products-cards-container">
+
                 <?php while ($row = $featured_products->fetch_assoc()){?>
-                    <div class="product-card">
-                        <?php if ($row['product_special_offer']>0){?>
-                            <div class="badge">Sale</div>
-                        <?php }?>
-                        <div class="product-tumb">
-                            <img src="../Server/ProductsImages/<?php echo $row['product_image']?>" alt="">
-                        </div>
-                        <div class="product-details">
-                            <span class="product-catagory"><?php echo $row['product_category']?></span>
-                            <h4><a href="singleProduct.php?product_id=<?php echo $row['product_id']?>"><?php echo $row ['product_name']?></a></h4>
-                            <div class="product-bottom-details">
-                                <div class="product-price">
-                                    <?php if ($row['product_special_offer']>0){?>
-                                        <small>₪<?php echo $row['product_price']?><br></small>
-                                    <?php }?>
-                                    <?php echo $row['product_price']- $row['product_special_offer']?>
-                                </div>
-                                <div class="product-links">
-                                    <a href=""><i class="fa fa-heart"></i></a>
-                                    <a href=""><i class="fa fa-shopping-cart"></i></a>
+                    <form method="post" action="singleProduct.php">
+                        <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>"/>
+                        <input type="hidden" name="product_name" value="<?php echo $row[ 'product_name']; ?>"/>
+                        <input type="hidden" name="product_price" value="<?php echo $row[ 'product_price']; ?>"/>
+                        <input type="hidden" name="product_id" value="<?php echo $row[ 'product_id']; ?>"/>
+                        <input type="hidden" name="product_special_offer" value="<?php echo $row[ 'product_special_offer']; ?>"/>
+                        <input type="hidden" name="product_category" value="<?php echo $row[ 'product_category']; ?>"/>
+                        <input type="hidden" name="quantity_in_stock" value="<?php echo $row[ 'quantity_in_stock']; ?>"/>
+                        <input type="hidden" name="product_id_main" value="<?php echo $pid ?>"/>
+
+
+
+
+                        <div class="product-card">
+                            <?php if ($row['product_special_offer']>0){?>
+                                <div class="badge">Sale</div>
+                            <?php }?>
+                            <div class="product-tumb">
+                                <img src="../Server/ProductsImages/<?php echo $row['product_image']?>" alt="">
+                            </div>
+                            <div class="product-details">
+                                <span class="product-catagory"><?php echo $row['product_category']?></span>
+                                <h4><a href="singleProduct.php?product_id=<?php echo $row['product_id']?>"><?php echo $row ['product_name']?></a></h4>
+                                <div class="product-bottom-details">
+                                    <div class="product-price">
+                                        <?php if ($row['product_special_offer']>0){?>
+                                            <small>₪<?php echo $row['product_price']?><br></small>
+                                        <?php }?>
+                                        ₪<?php echo $row['product_price']- $row['product_special_offer']?>
+                                    </div>
+                                    <div class="product-links">
+                                        <button type="submit" name="addToWishlist"><a href=""><i class="fa fa-heart"></i></a></button>
+                                        <button type="submit" name="addToCart"><a><i class="fa fa-shopping-cart"></i></a></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 <?php }?>
+
 
             </div>
         </div>

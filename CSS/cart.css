@@ -1,0 +1,52 @@
+
+.container {
+    gap: 20px;
+    display: block;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    background: #eaeaea;
+    border-radius: 10px;
+    padding: 0.7rem 0.4rem;
+    margin-bottom: 12px;
+}
+
+.quantity-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0px 8px;
+    cursor: pointer;
+}
+.quantity-btn svg {
+    width: 15px;
+    height: 15px;
+}
+.quantity-input {
+    outline: none;
+    user-select: none;
+    text-align: center;
+    width: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+}
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+section{
+    min-height: 65vh;
+}

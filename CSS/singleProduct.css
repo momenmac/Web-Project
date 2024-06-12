@@ -172,7 +172,7 @@ h1 {
 }
 
 /* Product Price */
-.product-price {
+.container.product-price {
     display: flex;
     align-items: center;
     margin-bottom: 30px;

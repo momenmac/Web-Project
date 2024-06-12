@@ -26,11 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'product_id' => $_POST['product_id'],
             'product_special_offer' => $_POST['product_special_offer'],
             'product_category' => $_POST['product_category'],
+            'quantity_in_stock' => $_POST['quantity_in_stock'],
             'product_quantity'=> 1
         ];
 
         if (!isset($_SESSION['cart'][$_POST['product_id']])) {
             $_SESSION['cart'][$_POST['product_id']] = $product;
+        }
+        else{
+            $_SESSION['cart'][$_POST['product_id']]['product_quantity'] += 1;
         }
 
     }
@@ -242,6 +246,8 @@ include ("loginPanel.php")
                 <input type="hidden" name="product_id" value="<?php echo $row[ 'product_id']; ?>"/>
                 <input type="hidden" name="product_special_offer" value="<?php echo $row[ 'product_special_offer']; ?>"/>
                 <input type="hidden" name="product_category" value="<?php echo $row[ 'product_category']; ?>"/>
+                <input type="hidden" name="quantity_in_stock" value="<?php echo $row[ 'quantity_in_stock']; ?>"/>
+
 
 
                 <div class="product-card">

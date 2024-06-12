@@ -17,6 +17,16 @@ function showCartPanel(){
     document.body.classList.add('no-scroll');
 
 }
+function hideCartPanel(){
+    const loginPanel = document.querySelectorAll('.login-panel').item(0);
+    loginPanel.classList.remove('display-login');
+    const cartPanel = document.querySelectorAll('.cart-right-panel').item(0);
+    cartPanel.classList.remove('display-cart');
+    const overlay = document.querySelector('.overlay-dark');
+    overlay.style.display = 'none';
+    document.body.classList.remove('no-scroll');
+
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     window.onscroll = function () {
