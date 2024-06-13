@@ -6,6 +6,21 @@ function showLoginPanel(){
     const overlay = document.querySelector('.overlay-dark');
     overlay.style.display = 'block';
     document.body.classList.add('no-scroll');
+    const wishlistPanel = document.querySelectorAll('.wishlist-right-panel').item(0);
+    wishlistPanel.classList.remove('display-wishlist');
+}
+
+function showWishlistPanel(){
+    const cartPanel = document.querySelectorAll('.cart-right-panel').item(0);
+    cartPanel.classList.remove('display-cart');
+    const loginPanel = document.querySelectorAll('.login-panel').item(0);
+    loginPanel.classList.remove('display-login');
+
+    const wishlistPanel = document.querySelectorAll('.wishlist-right-panel').item(0);
+    wishlistPanel.classList.add('display-wishlist');
+    const overlay = document.querySelector('.overlay-dark');
+    overlay.style.display = 'block';
+    document.body.classList.add('no-scroll');
 }
 function showCartPanel(){
     const loginPanel = document.querySelectorAll('.login-panel').item(0);
@@ -13,6 +28,8 @@ function showCartPanel(){
     const cartPanel = document.querySelectorAll('.cart-right-panel').item(0);
     cartPanel.classList.add('display-cart');
     const overlay = document.querySelector('.overlay-dark');
+    const wishlistPanel = document.querySelectorAll('.wishlist-right-panel').item(0);
+    wishlistPanel.classList.remove('display-wishlist');
     overlay.style.display = 'block';
     document.body.classList.add('no-scroll');
 
@@ -22,6 +39,8 @@ function hideCartPanel(){
     loginPanel.classList.remove('display-login');
     const cartPanel = document.querySelectorAll('.cart-right-panel').item(0);
     cartPanel.classList.remove('display-cart');
+    const wishlistPanel = document.querySelectorAll('.wishlist-right-panel').item(0);
+    wishlistPanel.classList.remove('display-wishlist');
     const overlay = document.querySelector('.overlay-dark');
     overlay.style.display = 'none';
     document.body.classList.remove('no-scroll');
@@ -35,6 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var downHeader = document.getElementById("down-header");
     var cart = document.getElementsByClassName("cart-right-panel").item(0);
     var loginPanel = document.querySelectorAll(".login-panel").item(0);
+    var wishlistPanel = document.querySelectorAll(".wishlist-right-panel").item(0);
+
     var sticky = downHeader.offsetTop;
 
     function checkSticky() {
@@ -42,10 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
             downHeader.classList.add("sticky");
             cart.classList.add("sticky")
             loginPanel.classList.add("sticky");
+            wishlistPanel.classList.add("sticky")
         } else {
             downHeader.classList.remove("sticky");
             cart.classList.remove("sticky");
             loginPanel.classList.remove("sticky");
+            wishlistPanel.classList.remove("sticky")
+
         }
     }
 });

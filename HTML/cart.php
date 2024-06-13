@@ -58,17 +58,45 @@
             }
         });
     });
+    function contShopping() {
+        if (window.history.length > 1) {
+            history.go(-1);
+        } else {
+            window.location.href = 'index.php';
+        }
+    };
+
 </script>
 
 <?php
+include ("../Server/connection.php");
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['sync'])) {
         if (isset($_SESSION['cart'][$_POST['product_id']])) {
-            $_SESSION['cart'][$_POST['product_id']]['product_quantity'] = $_POST['quantity'];
+            if ( $_SESSION['cart'][$_POST['product_id']]['product_quantity'] + $_POST['quantity'] <= $_SESSION['cart'][$_POST['product_id']]['quantity_in_stock'] ) {
+                $_SESSION['cart'][$_POST['product_id']]['product_quantity'] += $_POST['quantity'];
+            }else{
+                $_SESSION['cart'][$_POST['product_id']]['product_quantity'] =$_SESSION['cart'][$_POST['product_id']]['quantity_in_stock'];
+
+            }
+        }
+        if (isset($_session['logged_in'])) {
+            $stmt = $conn->prepare("UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?");
+            $stmt->bind_param("iii",$_SESSION['cart'][$_POST['product_id']]['product_quantity'], $_session['username_id'], $_POST['product_id']);
+            $stmt->execute();
+            $stmt->close();
         }
     }
     elseif (isset($_POST['trash'])){
         unset($_SESSION['cart'][$_POST['product_id']]);
+        if (isset($_SESSION['logged_in'])) {// Get the user ID from the session
+            $stmt = $conn->prepare("DELETE FROM wishlist WHERE user_id = ? AND product_id = ?");
+            $stmt->bind_param("ii", $_SESSION['username_id'], $_POST['product_id']); // "ii" means two integers
+            $stmt->execute();
+            $stmt->close();
+        }
+
+
     }
 
 }
@@ -76,7 +104,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 include ('header.php');
 include("cartPanel.php");
-include("loginPanel.php");?>
+include("loginPanel.php");
+include ("wishlistPanel.php");
+?>
+
 
 <style>
     #down-header{
@@ -201,7 +232,7 @@ include("loginPanel.php");?>
                     <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
                 </div>
                 <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                    <a href="catalog.html">
+                    <a href="javascript:contShopping()">
                         <i class="fas fa-arrow-left mr-2"></i> Continue Shopping</a>
                 </div>
             </div>

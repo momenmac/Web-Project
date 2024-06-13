@@ -17,7 +17,7 @@
       </div>
 
       <div class="top-header-right">
-        <a href="#" class="top-header-right-icons">
+        <a href="javascript:showWishlistPanel()" class="top-header-right-icons">
           <lord-icon
                   src="https://cdn.lordicon.com/xyboiuok.json"
                   trigger="hover"

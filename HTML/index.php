@@ -36,12 +36,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         else{
             $_SESSION['cart'][$_POST['product_id']]['product_quantity'] += 1;
         }
+        if (isset($_session['logged_in'])) {
+            // Prepare the SQL statement
+            $stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)");
+            $stmt->bind_param("iii", $_session['username_id'], $_POST['product_id'],$_POST['product_quantity']);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+    }
+    if (isset($_POST['addToWishlist'])) {
+        $product = [
+            'product_image' => $_POST['product_image'],
+            'product_name' => $_POST['product_name'],
+            'product_price' => $_POST['product_price'],
+            'product_id' => $_POST['product_id'],
+            'product_special_offer' => $_POST['product_special_offer'],
+            'product_category' => $_POST['product_category'],
+        ];
+
+        if (!isset($_SESSION['wishlist'][$_POST['product_id']])) {
+            $_SESSION['wishlist'][$_POST['product_id']] = $product;
+        }
+        if (isset($_session['logged_in'])) {
+            // Prepare the SQL statement
+            $stmt = $conn->prepare("INSERT INTO  (wishlist_item_id, user_id, product_id) VALUES (?, ?)");
+            $stmt->bind_param("ii", $_session['username_id'], $_POST['product_id']);
+            $stmt->execute();
+            $stmt->close();
+        }
 
     }
 }
 include("header.php");
 include ("cartPanel.php");
-include ("loginPanel.php")
+include ("loginPanel.php");
+include ("wishlistPanel.php");
+
 
 
 ?>

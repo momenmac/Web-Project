@@ -194,6 +194,7 @@ h1 {
     text-decoration: none;
     padding: 12px 30px;
     transition: all .5s;
+    border: none;
 }
 
 .wishlist-btn {
@@ -205,6 +206,7 @@ h1 {
     text-decoration: none;
     padding: 12px 12px;
     transition: all .5s;
+    border: none;
 }
 .wishlist-btn:hover{
     background-color: #075bba;

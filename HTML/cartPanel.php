@@ -1,3 +1,9 @@
+
+<?php
+if (!isset($_SESSION)) {
+    header("location: cart.php");
+}
+?>
 <div class="cart-right-panel">
     <div class="close-icon" style="cursor: pointer" onclick="hideCartPanel()">
         <div style="width: 50%">

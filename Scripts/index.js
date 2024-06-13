@@ -94,10 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.querySelector('.overlay-dark');
     const cartPanel = document.querySelectorAll('.cart-right-panel').item(0);
     const loginPanel = document.querySelectorAll('.login-panel').item(0);
+    const wishlistPanel = document.querySelectorAll('.wishlist-right-panel').item(0);
+
     overlay.addEventListener('click', function(){
         overlay.style.display = 'none';
         cartPanel.classList.remove('display-cart');
         loginPanel.classList.remove('display-login');
+        wishlistPanel.classList.remove('display-wishlist');
         document.body.classList.remove('no-scroll');
 
 
@@ -108,7 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         icon.addEventListener('mouseenter', function () {
             overlay.style.display = 'block';
-            document.body.classList.add('no-scroll');
+            cartPanel.classList.remove('display-cart');
+            loginPanel.classList.remove('display-login');
+            wishlistPanel.classList.remove('display-wishlist');
         });
 
         icon.addEventListener('mouseleave', function () {
