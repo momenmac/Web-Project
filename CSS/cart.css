@@ -50,3 +50,12 @@
 section{
     min-height: 65vh;
 }
+.buttons_in_cart{
+    transition: ease 0.3s;
+    margin-right: 20px;
+}
+
+.buttons_in_cart:hover{
+    transition: 0.3s ease;
+    transform: scale(1.03);
+}

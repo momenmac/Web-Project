@@ -23,7 +23,7 @@ if (!isset($_SESSION)) {
         $total = 0;
         if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $item) {
-                $total = $total + ($item['product_price'] * $item['product_quantity']);
+                $total = $total + (($item['product_price'] -$item['product_special_offer']) * $item['product_quantity']);
                 ?>
                 <div class="product-in-cart">
                     <div class="product-in-cart-left">

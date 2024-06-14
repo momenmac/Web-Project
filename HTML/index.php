@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         if (isset($_session['logged_in'])) {
             // Prepare the SQL statement
-            $stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)");
             $stmt->bind_param("iii", $_session['username_id'], $_POST['product_id'],$_POST['product_quantity']);
             $stmt->execute();
             $stmt->close();
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         if (isset($_session['logged_in'])) {
             // Prepare the SQL statement
-            $stmt = $conn->prepare("INSERT INTO  (wishlist_item_id, user_id, product_id) VALUES (?, ?)");
+            $stmt = $conn->prepare("INSERT INTO wishlist_items (wishlist_item_id, user_id, product_id) VALUES (?, ?)");
             $stmt->bind_param("ii", $_session['username_id'], $_POST['product_id']);
             $stmt->execute();
             $stmt->close();

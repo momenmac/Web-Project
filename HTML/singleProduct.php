@@ -12,7 +12,8 @@
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="../Scripts/product.js"></script>
     <script src="../Scripts/global.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+    <script src="../Scripts/index.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>-->
     <script src="https://kit.fontawesome.com/64a3783f0c.js" crossorigin="anonymous"></script>
 
 
@@ -61,7 +62,7 @@ else if (isset($_POST['addToCart'])) {
 
         }
     if (isset($_session['logged_in'])) {
-        $stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)");
         $stmt->bind_param("iii", $_session['username_id'], $_POST['product_id'],$_POST['product_quantity']);
         $stmt->execute();
         $stmt->close();
@@ -87,7 +88,7 @@ else if (isset($_POST['addToWishlist'])) {
         $_SESSION['wishlist'][$_POST['product_id']] = $product2;
     }
     if (isset($_session['logged_in'])) {
-        $stmt = $conn->prepare("INSERT INTO  (wishlist_item_id, user_id, product_id) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO wishlist_items  (wishlist_item_id, user_id, product_id) VALUES (?, ?)");
         $stmt->bind_param("ii", $_session['username_id'], $_POST['product_id']);
         $stmt->execute();
         $stmt->close();

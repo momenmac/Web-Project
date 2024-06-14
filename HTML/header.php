@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION)) {
+    header("location: cart.php");
+}
+?>
 <header id="header">
   <div id="pc-header">
     <div id="top-header">
@@ -349,7 +354,7 @@
 
   <div class="header-bottom-right">
     <div class="top-header-right" id="top-header-right">
-      <a href="#" class="top-header-right-icons">
+      <a href="javascript:showWishlistPanel()" class="top-header-right-icons">
         <lord-icon
                 src="https://cdn.lordicon.com/xyboiuok.json"
                 trigger="hover"

@@ -1,7 +1,7 @@
 
 <?php
 if (!isset($_SESSION)) {
-    header("location: index.php");
+    header("location: wishlist.php");
 }
 ?>
 <div class="wishlist-right-panel">
@@ -15,7 +15,7 @@ if (!isset($_SESSION)) {
 
         </div>
         <div style="width: 50%; text-align: left; padding-left: 7px; display: flex; justify-content: right; align-items: center; padding-right: 35px; font-size: 18px;">
-            <a href="cart.php" class="edit-cart" >Edit cart</a>
+            <a href="wishlist.php" class="edit-cart" >Edit Wishlist</a>
         </div>
 
     </div>

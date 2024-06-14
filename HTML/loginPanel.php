@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION)) {
+    header("location: index.php");
+}
+?>
 <div class="login-panel">
     <b>Sign in</b><br>
     <div class="login-panel-container">
@@ -11,7 +16,7 @@
                 <input type="password" name="password" maxlength="50">
             </label>
             <input type="submit" name="signInButton" value="Sign in"><br>
-            <button type="button" onclick="document.querySelector('.login-panel-container').style.display = 'none'" style="background-color: var(--secondary); color: white">Sign Up</button>
+            <button type="button" onclick="window.location.href = 'signup.php'" style="background-color: var(--secondary); color: white">Sign Up</button>
 
         </form>
         <br>
