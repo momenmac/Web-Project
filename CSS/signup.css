@@ -2,6 +2,7 @@ main{
     justify-content: center;
     padding: 50px;
     display: flex;
+    height: 63vh;
 }
 .container {
     position: relative;
@@ -108,4 +109,10 @@ main{
     .form :where(.gender-option, .gender) {
         row-gap: 15px;
     }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

@@ -2,6 +2,14 @@
 if (!isset($_SESSION)) {
     header("location: cart.php");
 }
+if(isset($_SESSION['username'])){
+    include('../Server/connection.php');
+    $stmt = $conn->prepare("SELECT * FROM users WHERE user_name = ?");
+    $stmt->bind_param("s", $_SESSION['username']);
+    $stmt->execute();
+    $user = $stmt->get_result();
+    $_SESSION['username_id'] = $user['user_id'];
+}
 ?>
 <header id="header">
   <div id="pc-header">
@@ -32,8 +40,9 @@ if (!isset($_SESSION)) {
           </lord-icon>
           <div>Wish List</div>
         </a>
-
-        <a href="javascript:showLoginPanel()" class="top-header-right-icons">
+          <?php echo isset($_SESSION['username_id'])
+              ? '<a href="account.php" class="top-header-right-icons">'
+              : '<a href="javascript:showLoginPanel()" class="top-header-right-icons">';?>
           <lord-icon
                   src="https://cdn.lordicon.com/kthelypq.json"
                   trigger="hover"
@@ -42,7 +51,7 @@ if (!isset($_SESSION)) {
                   style="width:35px;height:35px">
           </lord-icon>
 
-          <div>Sign in</div>
+          <div><?php echo isset($_SESSION['username_id']) ? 'Account' : 'Sign in'; ?></div>
         </a>
 
 
@@ -364,8 +373,9 @@ if (!isset($_SESSION)) {
         </lord-icon>
       </a>
 
-      <a href="javascript:showLoginPanel()" class="top-header-right-icons">
-        <lord-icon
+        <?php echo isset($_SESSION['username_id'])
+            ? '<a href="account.php" class="top-header-right-icons">'
+            : '<a href="javascript:showLoginPanel()" class="top-header-right-icons">';?>        <lord-icon
                 src="https://cdn.lordicon.com/kthelypq.json"
                 trigger="hover"
                 target=".top-header-right-icons"
