@@ -1,0 +1,236 @@
+/*About us*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+    --background-color: #f5f5f5;
+    --text-color: black;
+    --primary: #161880;
+    --secondary: #0a6cdc;
+    --yellow: #ffbc03;
+    --green: #3dc781;
+    --cerise: #E52F69;
+}
+
+body {
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+section h1 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+#contact-us ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#contact-us li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.team-member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.team-member img {
+    border-radius: 50%;
+    margin-right: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+.team-info h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--primary);
+}
+
+.team-info p {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--secondary);
+}
+
+iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.block-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.block-item {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.block-item .img {
+    text-align: center;
+}
+.block-item .content {
+    text-align: center;
+}
+.title {
+    text-align: center;}
+
+
+/*Contact US*/
+
+#contact-us {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+#contact-us h1,
+#contact-us h3 {
+    text-align: center;
+    color: #333;
+}
+
+#contact-us p {
+    text-align: center;
+    color: #666;
+}
+
+.page-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.halo-contact-form,
+.halo-contact-info {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.halo-contact-form p,
+.halo-contact-info .description {
+    color: #666;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-row--half .form-field {
+    flex: 1 1 45%;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+textarea.form-input {
+    resize: vertical;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button--large {
+    font-size: 16px;
+}
+
+.button--primary {
+    background-color: #007bff;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+.form-actions {
+    display: flex;
+    justify-content: center;
+}
+
+/*Our team*/
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+.team-members {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.team-member {
+    margin-bottom: 20px;
+}
+
+
+.team-picture {
+    margin-left: auto;
+    flex: 0 0 30%;
+}
+
+.team-picture img {
+    max-width: 100%;
+}

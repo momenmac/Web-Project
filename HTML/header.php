@@ -430,7 +430,7 @@ elseif (isset($_POST['signInButton'])) {
 
         </li>
         <li class="navPages-list-icons">
-          <a href="#">
+          <a href="http://localhost/Web-Project/HTML/about.php">
             About&nbsp;
             <lord-icon
                     src="https://cdn.lordicon.com/rmkahxvq.json"
@@ -446,15 +446,16 @@ elseif (isset($_POST['signInButton'])) {
               <div class="navPages-hidden-container-inside">
                 <div class="navPages-hidden-container-inside-top" style="width: 100%; padding-left: 32px; padding-right: 0; margin-top: 0">
                   <div class="col1" style="width: 100%">
-                    <a href="#"><div>About Us</div></a>
-                    <a href="#"><div>Contact Us</div></a>
-                    <a href="#"><div>Our team</div></a>
-                    <a href="#"><div>Location</div></a>
+                      <a href="http://localhost/Web-Project/HTML/about.php#about-us"><div>About Us</div></a>
+                      <a href="http://localhost/Web-Project/HTML/about.php#contact-us"><div>Contact Us</div></a>
+                      <a href="http://localhost/Web-Project/HTML/about.php#our-team"><div>Our Team</div></a>
+                      <a href="http://localhost/Web-Project/HTML/about.php#location"><div>Location</div></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
 
         </li>
 
