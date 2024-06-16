@@ -36,10 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         else{
             $_SESSION['cart'][$_POST['product_id']]['product_quantity'] += 1;
         }
-        if (isset($_session['logged_in'])) {
+        if (isset($_SESSION['logged_in'])) {
             // Prepare the SQL statement
+            $qt=1;
             $stmt = $conn->prepare("INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)");
-            $stmt->bind_param("iii", $_session['username_id'], $_POST['product_id'],$_POST['product_quantity']);
+            echo "test";
+            $stmt->bind_param("iii", $_SESSION['username_id'], $_POST['product_id'],$qt);
             $stmt->execute();
             $stmt->close();
         }
@@ -58,11 +60,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!isset($_SESSION['wishlist'][$_POST['product_id']])) {
             $_SESSION['wishlist'][$_POST['product_id']] = $product;
         }
-        if (isset($_session['logged_in'])) {
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        if (isset($_SESSION['logged_in'])) {
             // Prepare the SQL statement
-            $stmt = $conn->prepare("INSERT INTO wishlist_items (wishlist_item_id, user_id, product_id) VALUES (?, ?)");
-            $stmt->bind_param("ii", $_session['username_id'], $_POST['product_id']);
-            $stmt->execute();
+            $stmt = $conn->prepare("INSERT INTO wishlist_items (user_id, product_id) VALUES (?, ?)");
+            if (!$stmt) {
+                die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
+            }
+
+            $userId = $_SESSION['username_id'];
+            $productId = $_POST['product_id'];
+            $stmt->bind_param("ii", $userId, $productId);
+
+            if (!$stmt->execute()) {
+                die("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+            }
             $stmt->close();
         }
 

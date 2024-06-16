@@ -61,9 +61,9 @@ else if (isset($_POST['addToCart'])) {
             }
 
         }
-    if (isset($_session['logged_in'])) {
+    if (isset($_SESSION['logged_in'])) {
         $stmt = $conn->prepare("INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)");
-        $stmt->bind_param("iii", $_session['username_id'], $_POST['product_id'],$_POST['product_quantity']);
+        $stmt->bind_param("iii", $_SESSION['username_id'], $_POST['product_id'],$_POST['product_quantity']);
         $stmt->execute();
         $stmt->close();
     }

@@ -7,8 +7,110 @@ if(isset($_SESSION['username'])){
     $stmt = $conn->prepare("SELECT * FROM users WHERE user_name = ?");
     $stmt->bind_param("s", $_SESSION['username']);
     $stmt->execute();
-    $user = $stmt->get_result();
-    $_SESSION['username_id'] = $user['user_id'];
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        $_SESSION['username_id'] = $user['user_id'];
+    }
+    unset($_SESSION['username']);
+}
+elseif (isset($_POST['signInButton'])) {
+    echo "test";
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    echo $username;
+    echo $password;
+
+    if ($stmt = $conn->prepare("SELECT user_id, user_password FROM users WHERE user_name = ?")) {
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($user_id, $hashed_password);
+
+        if ($stmt->num_rows > 0) {
+            $stmt->fetch();
+            // Debugging: Display fetched user_id and hashed_password
+            echo "Fetched user_id: " . $user_id . "<br>";
+            echo "Fetched hashed_password: " . $hashed_password . "<br>";
+
+            if (password_verify($password, $hashed_password)) {
+                $_SESSION['username_id'] = $user_id;
+                $_SESSION['logged_in'] = true;
+                unset($_SESSION['cart']);
+                // Prepare SQL statement to fetch cart items with product details for the logged-in user
+                $stmt = $conn->prepare("SELECT ci.product_id, p.product_name, p.product_price, p.product_image,
+                            p.product_special_offer, p.product_category, p.quantity_in_stock, ci.quantity
+                            FROM cart_items ci
+                            INNER JOIN products p ON ci.product_id = p.product_id
+                            WHERE ci.user_id = ?");
+                $stmt->bind_param("i", $_SESSION['username_id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                // Check if cart items exist for the user
+                if ($result->num_rows > 0) {
+                    // Initialize cart array in session
+                    $_SESSION['cart'] = array();
+
+                    // Fetch and add cart items with product details to the session
+                    while ($row = $result->fetch_assoc()) {
+                        $product = [
+                            'product_id' => $row['product_id'],
+                            'product_name' => $row['product_name'],
+                            'product_price' => $row['product_price'],
+                            'product_image' => $row['product_image'],
+                            'product_special_offer' => $row['product_special_offer'],
+                            'product_category' => $row['product_category'],
+                            'quantity_in_stock' => $row['quantity_in_stock'],
+                            'product_quantity' => $row['quantity']
+                        ];
+
+                        $_SESSION['cart'][$row['product_id']] = $product;
+                    }
+
+                }
+                //wishlist
+                $stmt = $conn->prepare("SELECT wi.product_id, p.product_name, p.product_price, p.product_image,
+                            p.product_special_offer, p.product_category
+                            FROM wishlist_items wi
+                            INNER JOIN products p ON wi.product_id = p.product_id
+                            WHERE wi.user_id = ?");
+                $stmt->bind_param("i", $_SESSION['username_id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                // Check if wishlist items exist for the user
+                if ($result->num_rows > 0) {
+                    $_SESSION['wishlist'] = array();
+
+                    // Fetch and add wishlist items with product details to the session
+                    while ($row = $result->fetch_assoc()) {
+                        $product = [
+                            'product_id' => $row['product_id'],
+                            'product_name' => $row['product_name'],
+                            'product_price' => $row['product_price'],
+                            'product_image' => $row['product_image'],
+                            'product_special_offer' => $row['product_special_offer'],
+                            'product_category' => $row['product_category']
+                        ];
+
+                        $_SESSION['wishlist'][$row['product_id']] = $product;
+                    }
+
+                }
+            }else{
+                $_SESSION['logged_in'] = false;
+                echo "Invalid password.";
+            }
+        } else {
+            $_SESSION['logged_in'] = false;
+            echo "Invalid username.";
+        }
+
+        $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $conn->error;
+    }
 }
 ?>
 <header id="header">

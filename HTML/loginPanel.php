@@ -1,12 +1,7 @@
-<?php
-if (!isset($_SESSION)) {
-    header("location: index.php");
-}
-?>
 <div class="login-panel">
     <b>Sign in</b><br>
     <div class="login-panel-container">
-        <form method="post" action="index.php">
+        <form method="post" action="">
             <label>
                 Username<br>
                 <input type="text" maxlength="50" name="username" placeholder="Enter your username"><br>
@@ -17,10 +12,7 @@ if (!isset($_SESSION)) {
             </label>
             <input type="submit" name="signInButton" value="Sign in"><br>
             <button type="button" onclick="window.location.href = 'signup.php'" style="background-color: var(--secondary); color: white">Sign Up</button>
-
         </form>
         <br>
-
     </div>
-
 </div>

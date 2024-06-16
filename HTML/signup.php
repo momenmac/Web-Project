@@ -61,6 +61,7 @@ include ('cartPanel.php');
 include ('loginPanel.php');
 include ('wishlistPanel.php');
 ?>
+<div class="overlay-dark"></div>
 <main>
 <section class="container">    <?php
     if (isset($success)) {

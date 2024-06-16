@@ -78,14 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     elseif (isset($_POST['trash'])){
         unset($_SESSION['wishlist'][$_POST['product_id']]);
-        if (isset($_SESSION['logged_in'])) {// Get the user ID from the session
-            $stmt = $conn->prepare("DELETE FROM wishlist WHERE user_id = ? AND product_id = ?");
-            $stmt->bind_param("ii", $_SESSION['username_id'], $_POST['product_id']); // "ii" means two integers
-            $stmt->execute();
-            $stmt->close();
-        }
 
-
+        $stmt = $conn->prepare("DELETE FROM wishlist_items WHERE user_id = ? AND product_id = ?");
+        $stmt->bind_param("ii", $_SESSION['username_id'], $_POST['product_id']);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
     }
 
 }
