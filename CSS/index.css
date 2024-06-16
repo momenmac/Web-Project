@@ -276,7 +276,7 @@ header{
     font-size: 18px;
 }
 .login-panel-container input, .login-panel-container button{
-    width: 100%;
+    width: 368px;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -1248,4 +1248,7 @@ footer{
     font-weight: bold;
     transition: 0.3s ease;
 
+}
+.login_text{
+    width: 368px;
 }

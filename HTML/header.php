@@ -18,8 +18,7 @@ elseif (isset($_POST['signInButton'])) {
     echo "test";
     $username = $_POST['username'];
     $password = $_POST['password'];
-    echo $username;
-    echo $password;
+
 
     if ($stmt = $conn->prepare("SELECT user_id, user_password FROM users WHERE user_name = ?")) {
         $stmt->bind_param("s", $username);
@@ -29,9 +28,6 @@ elseif (isset($_POST['signInButton'])) {
 
         if ($stmt->num_rows > 0) {
             $stmt->fetch();
-            // Debugging: Display fetched user_id and hashed_password
-            echo "Fetched user_id: " . $user_id . "<br>";
-            echo "Fetched hashed_password: " . $hashed_password . "<br>";
 
             if (password_verify($password, $hashed_password)) {
                 $_SESSION['username_id'] = $user_id;
@@ -100,11 +96,9 @@ elseif (isset($_POST['signInButton'])) {
                 }
             }else{
                 $_SESSION['logged_in'] = false;
-                echo "Invalid password.";
             }
         } else {
             $_SESSION['logged_in'] = false;
-            echo "Invalid username.";
         }
 
         $stmt->close();

@@ -134,10 +134,6 @@ include ('wishlistPanel.php');
                     <label>Username</label>
                     <input type="text" name="username" value="<?php echo isset($username) ? $username : ''; ?>" placeholder="Enter username" required disabled />
                 </div>
-                <div class="input-box">
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="Enter password" required />
-                </div>
             </div>
 
             <div class="column">
@@ -172,7 +168,8 @@ include ('wishlistPanel.php');
                 </div>
             </div>
             <button type="button" id="editBtn" onclick="enableEdit()">Edit</button>
-            <button type="submit" id="saveBtn" style="display: none;">Save</button>
+            <button type="button" id="editBtn" onclick="changePassword()">Edit</button>
+            <button type="submit" id="saveBtn" name="Save" style="display: none;">Save</button>
             <a href="account.php" class="cancel-btn">Cancel</a>
         </form>
         <script>
@@ -180,6 +177,9 @@ include ('wishlistPanel.php');
                 document.querySelectorAll('input').forEach(input => input.removeAttribute('disabled'));
                 document.getElementById('editBtn').style.display = 'none';
                 document.getElementById('saveBtn').style.display = 'block';
+            }
+            function changePassword(){
+
             }
         </script>
     </section>

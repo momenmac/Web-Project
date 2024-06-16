@@ -51,22 +51,27 @@ else if (isset($_POST['addToCart'])) {
 
     if (!isset($_SESSION['cart'][$_POST['product_id']])) {
             $_SESSION['cart'][$_POST['product_id']] = $product2;
+        if (isset($_SESSION['logged_in'])) {
+            $stmt = $conn->prepare("INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)");
+            $stmt->bind_param("iii", $_SESSION['username_id'], $_POST['product_id'],$_POST['product_quantity']);
+            $stmt->execute();
+            $stmt->close();
         }
-        else{
-            if ( $_SESSION['cart'][$_POST['product_id']]['product_quantity'] + $_POST['product_quantity'] <= $_SESSION['cart'][$_POST['product_id']]['quantity_in_stock'] ) {
-                $_SESSION['cart'][$_POST['product_id']]['product_quantity'] += $_POST['product_quantity'];
-            }else{
-                $_SESSION['cart'][$_POST['product_id']]['product_quantity'] =$_SESSION['cart'][$_POST['product_id']]['quantity_in_stock'];
-
-            }
-
+    }
+    else{
+        if ( $_SESSION['cart'][$_POST['product_id']]['product_quantity'] + $_POST['product_quantity'] <= $_SESSION['cart'][$_POST['product_id']]['quantity_in_stock'] ) {
+            $_SESSION['cart'][$_POST['product_id']]['product_quantity'] += $_POST['product_quantity'];
+        }else{
+            $_SESSION['cart'][$_POST['product_id']]['product_quantity'] =$_SESSION['cart'][$_POST['product_id']]['quantity_in_stock'];
         }
-    if (isset($_SESSION['logged_in'])) {
-        $stmt = $conn->prepare("INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)");
-        $stmt->bind_param("iii", $_SESSION['username_id'], $_POST['product_id'],$_POST['product_quantity']);
+        $stmt = $conn->prepare("UPDATE cart_items SET quantity = ? WHERE user_id = ? AND product_id = ?");
+        $stmt->bind_param("iii",  $_SESSION['cart'][$_POST['product_id']]['product_quantity'], $_SESSION['username_id'], $_POST['product_id']);
         $stmt->execute();
         $stmt->close();
+
+
     }
+
 
 }
 else if (isset($_POST['addToWishlist'])) {
@@ -86,13 +91,14 @@ else if (isset($_POST['addToWishlist'])) {
 
     if (!isset($_SESSION['wishlist'][$_POST['product_id']])) {
         $_SESSION['wishlist'][$_POST['product_id']] = $product2;
+        if (isset($_SESSION['logged_in'])) {
+            $stmt = $conn->prepare("INSERT INTO wishlist_items  (user_id, product_id) VALUES (?, ?)");
+            $stmt->bind_param("ii", $_SESSION['username_id'], $_POST['product_id']);
+            $stmt->execute();
+            $stmt->close();
+        }
     }
-    if (isset($_session['logged_in'])) {
-        $stmt = $conn->prepare("INSERT INTO wishlist_items  (wishlist_item_id, user_id, product_id) VALUES (?, ?)");
-        $stmt->bind_param("ii", $_session['username_id'], $_POST['product_id']);
-        $stmt->execute();
-        $stmt->close();
-    }
+
 
 }
 else{

@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         unset($_SESSION['wishlist']);
         if (isset($_SESSION['logged_in'])) {// Get the user ID from the session
             $stmt = $conn->prepare("DELETE FROM wishlist_items WHERE user_id = ?");
-            $stmt->bind_param("ii", $_SESSION['username_id']); // "ii" means two integers
+            $stmt->bind_param("i", $_SESSION['username_id']);
             $stmt->execute();
             $stmt->close();
         }
@@ -194,6 +194,11 @@ include ("wishlistPanel.php");
 
     </div>
 </section>
+<style>
+    .login-panel-container label{
+        padding-top: 10px;
+    }
+</style>
 <?php include("footer.html");?>
 </body>
 </html>
