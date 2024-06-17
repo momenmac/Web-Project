@@ -18,7 +18,7 @@
 <?php
 include ("../Server/connection.php");
 if (isset($_GET['search'])) {
-    $search =  $_GET['search']; // Prepare the search term for the LIKE clause
+    $search =  $_GET['search'];
 }
 elseif (isset($_POST['search'])){
     $search =  $_POST['search'] ;
@@ -120,7 +120,7 @@ include ("wishlistPanel.php");
         <div class="feature-products-cards-container">
 
             <?php while ($row = $featured_products->fetch_assoc()){?>
-            <form method="post" action="index.php">
+            <form method="post" action="search.php">
                 <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>"/>
                 <input type="hidden" name="product_name" value="<?php echo $row[ 'product_name']; ?>"/>
                 <input type="hidden" name="product_price" value="<?php echo $row[ 'product_price']; ?>"/>
@@ -161,33 +161,6 @@ include ("wishlistPanel.php");
 
     </div>
     </div>
-    <div class="get-offers-div-container">
-        <div class="get-offers-div">
-            <div>
-                <lord-icon
-                        src="https://cdn.lordicon.com/nzixoeyk.json"
-                        trigger="loop"
-                        colors="primary:#ffffff"
-                        style="width:40px;height:40px">
-                </lord-icon>
-            </div>
-            <div>
-                Sign up to Newsletter
-            </div>
-            <div>
-                ...and be the first to receive Special Offers
-            </div>
-            <div>
-      <span>
-        <form action="">
-          <input type="email" placeholder="Enter your email address">
-          <input type="submit" value="Subscribe" id="">
-        </form>
-      </span>
-            </div>
-        </div>
-    </div>
-
 </main>
 <?php include ('footer.html')?>
 </body>
