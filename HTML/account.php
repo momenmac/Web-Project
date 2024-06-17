@@ -19,8 +19,11 @@
 <?php
 // Start or resume the session
 session_start();
+if (isset($_POST['logout'])){
+    session_destroy();
+    header('location: index.php');
 
-// Redirect if the user is already logged in
+}
 if (!isset($_SESSION['username_id'])){
     header('location: index.php');
     exit(); // Ensure no further code execution
@@ -42,32 +45,70 @@ if (!isset($_SESSION['username_id'])){
 } else {
     // Check if the form is submitted via POST method
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Check if the form data is received
-        $username = $_POST['username'];
-        $firstName = $_POST['first_name'];
-        $lastName = $_POST['last_name'];
-        $email = $_POST['email'];
-        $phoneNumber = $_POST['phone_number'];
-        $birthDate = $_POST['birth_date'];
-        $gender = $_POST['gender'];
-        $city = $_POST['city'];
-        $region = $_POST['region'];
-        $street = $_POST['street'];
 
-        // Prepare and execute the UPDATE query to edit user data
-        $stmt = $conn->prepare('UPDATE users SET user_name=?, user_email=?, first_name=?, last_name=?, phone_number=?, birth_date=?, gender=?, city=?, region=?, street=? WHERE user_id=?');
-        $stmt->bind_param('ssssssssssi', $username, $email, $firstName, $lastName, $phoneNumber, $birthDate, $gender, $city, $region, $street, $_SESSION['username_id']);
+        if (isset($_POST['Save'])) {
+            // Update user data
+            $username = $_POST['username'];
+            $firstName = $_POST['first_name'];
+            $lastName = $_POST['last_name'];
+            $email = $_POST['email'];
+            $phoneNumber = $_POST['phone_number'];
+            $birthDate = $_POST['birth_date'];
+            $gender = $_POST['gender'];
+            $city = $_POST['city'];
+            $region = $_POST['region'];
+            $street = $_POST['street'];
 
-        // Check if the update is successful
-        if ($stmt->execute()) {
-            $success = true;
-        } else {
-            $success = false;
+            // Prepare and execute the UPDATE query to edit user data
+            $stmt = $conn->prepare('UPDATE users SET user_name=?, user_email=?, first_name=?, last_name=?, phone_number=?, birth_date=?, gender=?, city=?, region=?, street=? WHERE user_id=?');
+            $stmt->bind_param('ssssssssssi', $username, $email, $firstName, $lastName, $phoneNumber, $birthDate, $gender, $city, $region, $street, $_SESSION['username_id']);
+
+            // Check if the update is successful
+            if ($stmt->execute()) {
+                $success = true;
+            } else {
+                $success = false;
+            }
+
+            $stmt->close();
+            $conn->close();
+        } elseif (isset($_POST['change'])) {
+            // Change password
+            $oldPassword = $_POST['old_password'];
+            $newPassword = $_POST['new_password'];
+            $user_id = $_SESSION['username_id'];
+
+            // Fetch current password
+            $stmt = $conn->prepare('SELECT user_password FROM users WHERE user_id=?');
+            $stmt->bind_param('i', $user_id);
+            $stmt->execute();
+            $stmt->bind_result($currentPasswordHash);
+            $stmt->fetch();
+            $stmt->close();
+
+            // Verify the old password
+            if (password_verify($oldPassword, $currentPasswordHash)) {
+                // Hash the new password
+                $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+
+                // Update the password in the database
+                $stmt = $conn->prepare('UPDATE users SET user_password=? WHERE user_id=?');
+                $stmt->bind_param('si', $newPasswordHash, $user_id);
+
+                if ($stmt->execute()) {
+                    $passwordChangeSuccess = true;
+                } else {
+                    $passwordChangeSuccess = false;
+                }
+
+                $stmt->close();
+            } else {
+                $passwordChangeSuccess = false;
+                $passwordChangeError = 'Old password is incorrect.';
+            }
+
         }
-
-        $stmt->close();
-        $conn->close();
-    } else {
+    }
         // Fetch user data based on $_SESSION['username_id']
         $user_id = $_SESSION['username_id'];
         $query = "SELECT * FROM users WHERE user_id = $user_id";
@@ -86,7 +127,7 @@ if (!isset($_SESSION['username_id'])){
             $region = $row['region'];
             $street = $row['street'];
         }
-    }
+$conn->close();
 }
 
 include ('cartPanel.php');
@@ -99,21 +140,32 @@ include ('wishlistPanel.php');
         <?php
         if (isset($success)) {
             if ($success) {
-                echo ' <div style="color: green"> Updated successful!</div>';
-                echo '<div style="font-size: 26px">You will be redirected to your account page </div>';
-                echo '<style> form{display: none}</style>';
+                echo ' <div class="alert-success" style="color: green"> Updated successful!</div>';
                 echo '<script>
                 setTimeout(function() {
-                    window.location.href = "account.php";
-                }, 2000);
+                    document.getElementsByClassName("alert-success")[0].style.display = "none";
+                }, 5000);
               </script>';
             } else {
                 echo ' <div style="color: red"> Update failed. Please try again. </div>';
             }
         }
+        if (isset($passwordChangeSuccess)) {
+            if ($passwordChangeSuccess) {
+                echo ' <div class="alert-success" style="color: green"> Updated password successful!</div>';
+                echo '<script>
+                setTimeout(function() {
+                    document.getElementsByClassName("alert-success")[0].style.display = "none";
+                }, 5000);
+              </script>';
+            } else {
+                echo ' <div style="color: red"> couldn\'t update password </div>';
+            }
+        }
+
         ?>
         <header style="background-color: transparent">Registration Form</header>
-        <form action="signup.php" method="post" class="form">
+        <form id="update-info-form" action="account.php" method="post" class="form">
             <div class="column">
                 <div class="input-box">
                     <label>First Name</label>
@@ -167,24 +219,65 @@ include ('wishlistPanel.php');
                     <input type="text" name="street" value="<?php echo isset($street) ? $street : ''; ?>" placeholder="Enter street" disabled/>
                 </div>
             </div>
-            <button type="button" id="editBtn" onclick="enableEdit()">Edit</button>
-            <button type="button" id="editBtn" onclick="changePassword()">Edit</button>
-            <button type="submit" id="saveBtn" name="Save" style="display: none;">Save</button>
-            <a href="account.php" class="cancel-btn">Cancel</a>
+            <div class="column">
+                <button type="button" id="editBtn" onclick="enableEdit()">Edit</button>
+                <button type="submit" id="saveBtn" name="Save" style="display: none;">Save</button>
+                <button type="button" id="cancel" onclick="window.location.href = 'account.php';"  style="display: none; background-color: var(--secondary)">Cancel</button>
+
+            </div>
+            <style>
+                form button{
+                    border-radius: 15px;
+                    transition: 0.3s ease;
+
+                }
+                form button:hover{
+                    transform: scale(1.03);
+                    transition: 0.3s ease;
+                }
+            </style>
+
+
+        </form>
+
+        <form id="change-password-form" style="display: none" action="account.php" method="post" class="form">
+            <div class="input-box">
+                <label>Old password</label>
+                <input type="password" name="old_password"  placeholder="Enter old password" required />
+            </div>
+            <div class="input-box">
+                <label>New password</label>
+                <input type="password" name="new_password"  placeholder="Enter new password" required  />
+            </div>
+            <button type="submit" id="saveBtn" name="change" >change password</button>
+
+        </form>
+        <br>
+        <a href="account.php" class="cancel-btn">Cancel</a>
+        <br>
+        <br>
+        <a href="javascript:changePassword()" class="cancel-btn">Change password</a>
+        <br>
+        <br>
+        <form method="post" >
+            <button style="width: 20%; background-color: var(--cerise); padding: 10px 5px; border:none; color: white; font-size: 22px; cursor: pointer" type="submit" name="logout" class="cancel-btn">Logout</button>
         </form>
         <script>
             function enableEdit() {
                 document.querySelectorAll('input').forEach(input => input.removeAttribute('disabled'));
                 document.getElementById('editBtn').style.display = 'none';
                 document.getElementById('saveBtn').style.display = 'block';
-            }
-            function changePassword(){
+                document.getElementById('cancel').style.display = 'block';
 
             }
+            function changePassword(){
+                document.getElementById('change-password-form').style.display = 'block';
+                document.getElementById('update-info-form').style.display = 'none';
+            }
+
         </script>
     </section>
 </main>
 <?php include('footer.html'); ?>
 </body>
 </html>
-l>

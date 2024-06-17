@@ -11,6 +11,7 @@
     <link href="../IMG/Logo-icon.png" rel="icon">
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="../Scripts/product.js"></script>
+    <script src="../Scripts/index.js"></script>
     <script src="../Scripts/global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <script src="https://kit.fontawesome.com/64a3783f0c.js" crossorigin="anonymous"></script>

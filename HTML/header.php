@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION)) {
-    header("location: cart.php");
+    header("location: index.php");
 }
 if(isset($_SESSION['username'])){
     include('../Server/connection.php');

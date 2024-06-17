@@ -212,7 +212,7 @@ include('header.php');
                 <h2>Suggested <b>Products</b></h2>
             </div>
             <?php
-            $stmt = $conn->prepare("SELECT * FROM products WHERE product_category = ? and not(product_id = ?)");
+            $stmt = $conn->prepare("SELECT * FROM products WHERE product_category = ? and not(product_id = ?) limit 4");
             $stmt->bind_param("si", $cat, $pid);
 
             $stmt->execute();
