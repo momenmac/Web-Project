@@ -20,8 +20,8 @@ include ("../Server/connection.php");
 if (isset($_GET['search'])) {
     $search =  $_GET['search'];
 }
-elseif (isset($_POST['search'])){
-    $search =  $_POST['search'] ;
+elseif (isset($_GET['cat'])){
+    $cat = $_GET['cat'];
 }
 else
     header('location: index.php');
@@ -105,22 +105,33 @@ include ("wishlistPanel.php");
 <main>
     <div class="feature-products-container">
 
-            <div class="title">
-                <h2>Search for &nbsp;<b><?php echo $search?></b></h2>
-            </div>
+
         <?php
-        $stmt = $conn->prepare("SELECT * FROM products WHERE product_name LIKE ? OR product_category LIKE ? OR product_description LIKE ? LIMIT 8");
-        $search_s = "%" . $search . "%";
-        $stmt->bind_param('sss', $search_s, $search_s, $search_s);
-        $stmt->execute() ;
-        $featured_products = $stmt->get_result();
+        if (isset($_GET['search'])) {
+            $stmt = $conn->prepare("SELECT * FROM products WHERE product_name LIKE ? OR product_category LIKE ? OR product_description LIKE ?");
+            $search_s = "%" . $search . "%";
+            $stmt->bind_param('sss', $search_s, $search_s, $search_s);
+            $stmt->execute();
+            $featured_products = $stmt->get_result();
+        }
+        else{
+            $stmt = $conn->prepare("SELECT * FROM products WHERE  product_category LIKE ?");
+            $cat_s = "%" . $cat . "%";
+            $stmt->bind_param('s', $cat_s);
+            $stmt->execute();
+            $featured_products = $stmt->get_result();
+        }
+
         ?>
+        <div class="title">
+            <h2><?php echo isset($_GET['search']) ?"Search for  ": ""; ?> <b><?php echo isset($_GET['search']) ?$search: $cat; ?></b></h2>
+        </div>
 
 
         <div class="feature-products-cards-container">
 
             <?php while ($row = $featured_products->fetch_assoc()){?>
-            <form method="post" action="search.php">
+            <form method="post" action="products.php?<?php echo isset($_GET['search']) ?'search='.$search: 'cat='.$cat; ?>">
                 <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>"/>
                 <input type="hidden" name="product_name" value="<?php echo $row[ 'product_name']; ?>"/>
                 <input type="hidden" name="product_price" value="<?php echo $row[ 'product_price']; ?>"/>

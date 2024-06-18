@@ -114,7 +114,7 @@ elseif (isset($_POST['signInButton'])) {
         <a href="index.php"><img id="logo-image" src="../IMG/Logo.png" alt="Computers World Logo"></a>
       </div>
       <div id="top-header-middle">
-        <form id="search-form" method="get" action="search.php">
+        <form id="search-form" method="get" action="products.php">
           <input id="search-input-box" name="search" type="text" placeholder="Search the store">
         </form>
           <a>

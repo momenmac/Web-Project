@@ -186,61 +186,61 @@ include ("wishlistPanel.php");
   <div class="shop-by-category-title">Shop by category</div>
   <div class="shop-by-category-container">
     <div class="shop-by-category-grid">
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Laptops" class="category-card">
         <div class="category-image">
           <img src="../IMG/Laptops.png" alt="img">
         </div>
         <div class="category-name">Laptops</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Monitors" class="category-card">
         <div class="category-image">
           <img src="../IMG/Monitors.png" alt="img">
         </div>
         <div class="category-name">Monitors</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Cases" class="category-card">
         <div class="category-image">
           <img src="../IMG/Cases.png" alt="img">
         </div>
         <div class="category-name">Cases</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Computer CPU" class="category-card">
         <div class="category-image">
           <img src="../IMG/CPUs.png" alt="img">
         </div>
         <div class="category-name">Computer CPU</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Motherboards" class="category-card">
         <div class="category-image">
           <img src="../IMG/Motherboards.png" alt="img">
         </div>
         <div class="category-name">Motherboards</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Computer Drives" class="category-card">
         <div class="category-image">
           <img src="../IMG/ComputerDrives.png" alt="img">
         </div>
         <div class="category-name">Computer Drives</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=GPU Cards" class="category-card">
         <div class="category-image">
           <img src="../IMG/GPUs.png" alt="img">
         </div>
         <div class="category-name">GPU Cards</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Ram Memory" class="category-card">
         <div class="category-image">
           <img src="../IMG/RAMMEMORY.png" alt="img">
         </div>
         <div class="category-name">Ram Memory</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Gaming Chairs" class="category-card">
         <div class="category-image">
           <img src="../IMG/Chairs.png" alt="img">
         </div>
         <div class="category-name">Gaming Chairs</div>
       </a>
-      <a href="#top-header" class="category-card">
+      <a href="products.php?cat=Headsets" class="category-card">
         <div class="category-image">
           <img src="../IMG/Headset.png"  alt="img">
         </div>
