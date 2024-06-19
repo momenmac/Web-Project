@@ -163,18 +163,18 @@ include ("wishlistPanel.php");
 
   <div id="gallery-home">
     <div id="gallery-home-small-container">
-      <a href="index.php" class="gallery-home-small">
+      <a href="products.php?search=console" class="gallery-home-small">
         <img src="../IMG/gallery-small1.jpg">
       </a>
-      <a href="index.php" class="gallery-home-small">
+      <a href="products.php?search=tv" class="gallery-home-small">
         <img src="../IMG/gallery-small2.jpg">
       </a>
-      <a href="index.php" class="gallery-home-small">
+      <a href="products.php?search=chair" class="gallery-home-small">
         <img src="../IMG/gallery-small3.jpg">
       </a>
     </div>
     <div id="gallery-home-big-container">
-      <a href="index.php" id="gallery-home-big">
+      <a href="products.php?search=rog" id="gallery-home-big">
         <img src="../IMG/gallery-big.png">
       </a>
     </div>
