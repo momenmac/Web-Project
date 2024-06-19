@@ -261,6 +261,12 @@ include ('wishlistPanel.php');
         <br>
         <form method="post" >
             <button style="width: 20%; background-color: var(--cerise); padding: 10px 5px; border:none; color: white; font-size: 22px; cursor: pointer" type="submit" name="logout" class="cancel-btn">Logout</button>
+            <?php
+            // Check if the user is an admin
+            if ($_SESSION['role'] == 1) {
+                echo '<a href="../Admin/index.php" style="width: 20%; background-color: var(--secondary); padding: 10px 7px; border:none; color: white; font-size: 22px; cursor: pointer; margin-left: 10px; border-radius: 15px;" class="cancel-btn">Admin Panel</a>';
+            }
+            ?>
         </form>
         <script>
             function enableEdit() {

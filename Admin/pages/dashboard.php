@@ -3,7 +3,9 @@
 <head>
     <?php
     include('server/connection.php');
-
+    if (!isset($_SESSION)) {
+        header("location: ../index.php");
+    }
     // Fetch orders data per day
     $ordersPerDay = [];
     $query = "SELECT DATE(order_date) as order_day, COUNT(*) as order_count FROM orders GROUP BY DATE(order_date)";

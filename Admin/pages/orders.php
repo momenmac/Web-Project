@@ -1,5 +1,8 @@
 <?php
 include ('server/connection.php');
+if (!isset($_SESSION)) {
+    header("location: ../index.php");
+}
 ?>
 <div class="container mt-5">
     <h1>Orders</h1>

@@ -8,6 +8,9 @@
     error_reporting(E_ALL);
 
     include('../server/connection.php');
+    if (!isset($_SESSION['role'])) {
+        header('Location: ../index.php');
+    }
 
     if (isset($_GET['order_id'])) {
         $order_id = intval($_GET['order_id']);

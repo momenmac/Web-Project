@@ -1,3 +1,6 @@
+<?php   if (!isset($_SESSION)) {
+    header("location: ../index.php");
+}?>
 <div class="sidebar">
     <h2><a href="../HTML/index.php"><img id="logo-image" src="../IMG/Logo.png" style="width: 90%" alt="Computers World Logo"></a>
     </h2>

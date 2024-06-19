@@ -20,11 +20,11 @@ elseif (isset($_POST['signInButton'])) {
     $password = $_POST['password'];
 
 
-    if ($stmt = $conn->prepare("SELECT user_id, user_password FROM users WHERE user_name = ?")) {
+    if ($stmt = $conn->prepare("SELECT user_id, user_password,role FROM users WHERE user_name = ?")) {
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($user_id, $hashed_password);
+        $stmt->bind_result($user_id, $hashed_password,$role);
 
         if ($stmt->num_rows > 0) {
             $stmt->fetch();
@@ -32,6 +32,7 @@ elseif (isset($_POST['signInButton'])) {
             if (password_verify($password, $hashed_password)) {
                 $_SESSION['username_id'] = $user_id;
                 $_SESSION['logged_in'] = true;
+                $_SESSION['role'] = $role;
                 unset($_SESSION['cart']);
                 // Prepare SQL statement to fetch cart items with product details for the logged-in user
                 $stmt = $conn->prepare("SELECT ci.product_id, p.product_name, p.product_price, p.product_image,
