@@ -124,7 +124,8 @@
                 label: 'Orders per Day',
                 data: ordersData,
                 fill: false,
-                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(255,188,3,0.34)',
+                borderColor: 'rgb(255,188,3)',
                 tension: 0.1
             }]
         },
@@ -139,8 +140,8 @@
             datasets: [{
                 label: 'Total Money Sold per Day',
                 data: moneyData,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgb(10,108,220,0.1)',
+                borderColor: 'rgb(10,108,220,1)',
                 borderWidth: 1
             }]
         },

@@ -10,6 +10,7 @@ function redirect($page) {
 }
 
 if (isset($_POST['addProduct'])) {
+    // Retrieve form data
     $productName = $_POST['productName'];
     $productCategory = $_POST['productCategory'];
     $productDescription = $_POST['productDescription'];
@@ -18,6 +19,7 @@ if (isset($_POST['addProduct'])) {
     $productColor = $_POST['productColor'];
     $productStock = $_POST['productStock'];
 
+    // Prepare INSERT query
     $query = "INSERT INTO products (product_name, product_category, product_description, product_price, product_special_offer, product_color, quantity_in_stock";
 
     // Handle image upload
@@ -40,6 +42,7 @@ if (isset($_POST['addProduct'])) {
         $query .= ") VALUES ('$productName', '$productCategory', '$productDescription', '$productPrice', '$productSpecialOffer', '$productColor', '$productStock')";
     }
 
+    // Execute INSERT query
     if ($conn->query($query) === TRUE) {
         redirect('products');
     } else {
@@ -49,6 +52,7 @@ if (isset($_POST['addProduct'])) {
 
 // Edit Product
 if (isset($_POST['editProduct'])) {
+    // Retrieve form data
     $productId = $_POST['productId'];
     $productName = $_POST['productName'];
     $productCategory = $_POST['productCategory'];
@@ -58,6 +62,7 @@ if (isset($_POST['editProduct'])) {
     $productColor = $_POST['productColor'];
     $productStock = $_POST['productStock'];
 
+    // Prepare UPDATE query
     $query = "UPDATE products SET 
         product_name='$productName', 
         product_category='$productCategory', 
@@ -84,8 +89,10 @@ if (isset($_POST['editProduct'])) {
         }
     }
 
+    // Add WHERE clause to UPDATE query
     $query .= " WHERE product_id='$productId'";
 
+    // Execute UPDATE query
     if ($conn->query($query) === TRUE) {
         redirect('products');
     } else {
@@ -95,9 +102,12 @@ if (isset($_POST['editProduct'])) {
 
 // Delete Product
 if (isset($_GET['delete_product'])) {
-    $id = $_GET['delete_product'];
+    $productId = $_GET['delete_product'];
 
-    $query = "DELETE FROM products WHERE product_id='$id'";
+    // Prepare DELETE query
+    $query = "DELETE FROM products WHERE product_id='$productId'";
+
+    // Execute DELETE query
     if ($conn->query($query) === TRUE) {
         redirect('products');
     } else {
@@ -107,9 +117,12 @@ if (isset($_GET['delete_product'])) {
 
 // Delete Order
 if (isset($_GET['delete_order'])) {
-    $id = $_GET['delete_order'];
+    $orderId = $_GET['delete_order'];
 
-    $query = "DELETE FROM orders WHERE id='$id'";
+    // Prepare DELETE query
+    $query = "DELETE FROM orders WHERE order_id='$orderId'";
+
+    // Execute DELETE query
     if ($conn->query($query) === TRUE) {
         redirect('orders');
     } else {
@@ -119,9 +132,12 @@ if (isset($_GET['delete_order'])) {
 
 // Delete User
 if (isset($_GET['delete_user'])) {
-    $id = $_GET['delete_user'];
+    $userId = $_GET['delete_user'];
 
-    $query = "DELETE FROM users WHERE user_id='$id'";
+    // Prepare DELETE query
+    $query = "DELETE FROM users WHERE user_id='$userId'";
+
+    // Execute DELETE query
     if ($conn->query($query) === TRUE) {
         redirect('users');
     } else {
@@ -131,12 +147,15 @@ if (isset($_GET['delete_user'])) {
 
 // Add User
 if (isset($_POST['addUser'])) {
+    // Retrieve form data
     $userName = $_POST['userName'];
     $userEmail = $_POST['userEmail'];
     $userPassword = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
 
+    // Prepare INSERT query
     $query = "INSERT INTO users (user_name, user_email, user_password) VALUES ('$userName', '$userEmail', '$userPassword')";
 
+    // Execute INSERT query
     if ($conn->query($query) === TRUE) {
         redirect('users');
     } else {
@@ -146,11 +165,13 @@ if (isset($_POST['addUser'])) {
 
 // Edit User
 if (isset($_POST['editUser'])) {
+    // Retrieve form data
     $userId = $_POST['userId'];
     $userName = $_POST['userName'];
     $userEmail = $_POST['userEmail'];
     $userPassword = !empty($_POST['userPassword']) ? password_hash($_POST['userPassword'], PASSWORD_DEFAULT) : null;
 
+    // Prepare UPDATE query
     $query = "UPDATE users SET 
         user_name='$userName', 
         user_email='$userEmail'";
@@ -159,8 +180,10 @@ if (isset($_POST['editUser'])) {
         $query .= ", user_password='$userPassword'";
     }
 
+    // Add WHERE clause to UPDATE query
     $query .= " WHERE user_id='$userId'";
 
+    // Execute UPDATE query
     if ($conn->query($query) === TRUE) {
         redirect('users');
     } else {
@@ -168,6 +191,6 @@ if (isset($_POST['editUser'])) {
     }
 }
 
-// Close the connection once at the end
+// Close the database connection
 $conn->close();
 ?>
