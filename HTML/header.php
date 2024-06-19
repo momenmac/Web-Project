@@ -15,7 +15,6 @@ if(isset($_SESSION['username'])){
     unset($_SESSION['username']);
 }
 elseif (isset($_POST['signInButton'])) {
-    echo "test";
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -30,6 +29,12 @@ elseif (isset($_POST['signInButton'])) {
             $stmt->fetch();
 
             if (password_verify($password, $hashed_password)) {
+                echo '<div id="success-message" style="background-color: forestgreen; color: white">Signed in successfully</div>';
+                echo '<script>
+        setTimeout(function() {
+            document.getElementById("success-message").style.display = "none";
+        }, 3000);
+      </script>';
                 $_SESSION['username_id'] = $user_id;
                 $_SESSION['logged_in'] = true;
                 $_SESSION['role'] = $role;
@@ -97,9 +102,23 @@ elseif (isset($_POST['signInButton'])) {
                 }
             }else{
                 $_SESSION['logged_in'] = false;
+                echo '<div id="success-message" style="background-color: red; color: white">Something went wrong</div>';
+                echo '<script>
+        setTimeout(function() {
+            document.getElementById("success-message").style.display = "none";
+        }, 3000);
+      </script>';
+
             }
         } else {
             $_SESSION['logged_in'] = false;
+            echo '<div id="success-message" style="background-color: red; color: white">Something went wrong</div>';
+            echo '<script>
+        setTimeout(function() {
+            document.getElementById("success-message").style.display = "none";
+        }, 3000);
+      </script>';
+
         }
 
         $stmt->close();
