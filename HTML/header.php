@@ -363,14 +363,14 @@ elseif (isset($_POST['signInButton'])) {
             <div class="navPages-hidden-container">
               <div class="navPages-hidden-container-inside">
                 <div class="navPages-hidden-container-inside-bottom" style="height: 80%; margin-top: 60px">
-                  <img src="../IMG/cards1.jpg">
-                  <img src="../IMG/cards2.jpg">
-                  <img src="../IMG/cards3.jpg">
-                  <img src="../IMG/cards4.jpg">
-                  <img src="../IMG/cards5.jpg">
-                  <img src="../IMG/cards6.jpg">
-                  <img src="../IMG/cards7.jpg">
-                  <img src="../IMG/cards8.jpg">
+                  <img src="../IMG/cards1.jpg" onclick="window.location.href = 'products.php?search=Playstation cards';">
+                  <img src="../IMG/cards2.jpg" onclick="window.location.href = 'products.php?search=Xbox cards';">
+                  <img src="../IMG/cards3.jpg" onclick="window.location.href = 'products.php?search=Nintendo cards';">
+                  <img src="../IMG/cards4.jpg" onclick="window.location.href = 'products.php?search=Google store cards';">
+                  <img src="../IMG/cards5.jpg" onclick="window.location.href = 'products.php?search=Itunes cards';">
+                  <img src="../IMG/cards6.jpg" onclick="window.location.href = 'aproducts.php?search=Steam cards';">
+                  <img src="../IMG/cards7.jpg" onclick="window.location.href = 'products.php?search=Amazon cards';">
+                  <img src="../IMG/cards8.jpg" onclick="window.location.href = 'products.php?search=other cards';">
 
                 </div>
               </div>
