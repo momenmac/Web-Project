@@ -210,7 +210,7 @@ elseif (isset($_POST['signInButton'])) {
         <li class="navPages-list-icons active-navbar" id="home-navPage"><a href="index.php">Home
           <span class="test">New</span></a> </li>
         <li class="navPages-list-icons">
-          <a href="#">
+          <a href="products.php?search=console">
             Console&nbsp;
             <lord-icon
                     src="https://cdn.lordicon.com/rmkahxvq.json"
@@ -226,38 +226,38 @@ elseif (isset($_POST['signInButton'])) {
               <div class="navPages-hidden-container-inside">
                 <div class="navPages-hidden-container-inside-top">
                   <div class="col1">
-                    <div><a href="#"><b>Xbox</b></a></div>
-                    <a href="#"><div>Xbox One S</div></a>
-                    <a href="#"><div>Xbox One X</div></a>
-                    <a href="#"><div>Xbox One</div></a>
-                    <a href="#"><div>Xbox 360</div></a>
-                    <a href="#"><div>Xbox Accessories</div></a>
+                    <div><a href="products.php?search=Xbox"><b>Xbox</b></a></div>
+                    <a href="products.php?search=Xbox One S"><div>Xbox One S</div></a>
+                    <a href="products.php?search=Xbox One X"><div>Xbox One X</div></a>
+                    <a href="products.php?search=Xbox Onproducts.php?search=Xbox 360"><div>Xbox One</div></a>
+                    <a href="products.php?search=Xbox 360"><div>Xbox 360</div></a>
+                    <a href="products.php?search=Xbox Accessories"><div>Xbox Accessories</div></a>
                   </div>
 
                   <div class="col1">
-                    <div><a href="#"><b>Nintendo</b></a></div>
-                    <a href="#"><div>Nintendo Switch</div></a>
-                    <a href="#"><div>Nintendo Switch OLED</div></a>
-                    <a href="#"><div>Nintendo Switch Lite</div></a>
-                    <a href="#"><div>Nintendo Accessories</div></a>
+                    <div><a href="products.php?search=Nintendo"><b>Nintendo</b></a></div>
+                    <a href="products.php?search=Nintendo Switch"><div>Nintendo Switch</div></a>
+                    <a href="products.php?search=Nintendo Switch OLED"><div>Nintendo Switch OLED</div></a>
+                    <a href="products.php?search=Nintendo Switch Lite"><div>Nintendo Switch Lite</div></a>
+                    <a href="products.php?search=Nintendo Accessories"><div>Nintendo Accessories</div></a>
                   </div>
 
                   <div class="col1">
-                    <div><a href="#"><b>Playstation</b></a></div>
-                    <a href="#"><div>Playstation 5 Pro</div></a>
-                    <a href="#"><div>Playstation 5 Lite</div></a>
-                    <a href="#"><div>Playstation Portable</div></a>
-                    <a href="#"><div>Playstation 4 series</div></a>
-                    <a href="#"><div>Playstation Accessories</div></a>
+                    <div><a href="products.php?search=Playstation"><b>Playstation</b></a></div>
+                    <a href="products.php?search=Playstation 5 Pro"><div>Playstation 5 Pro</div></a>
+                    <a href="products.php?search=Playstation 5 Lite"><div>Playstation 5 Lite</div></a>
+                    <a href="products.php?search=Playstation Portable"><div>Playstation Portable</div></a>
+                    <a href="products.php?search=Playstation 4 series"><div>Playstation 4 series</div></a>
+                    <a href="products.php?search=Playstation Accessories"><div>Playstation Accessories</div></a>
                   </div>
 
 
                   <div class="col1">
-                    <div><a href="#"><b>Others</b></a></div>
-                    <a href="#"><div>Old Consoles</div></a>
-                    <a href="#"><div>Other Accessories</div></a>
-                    <a href="#"><div>Portable Consoles</div></a>
-                    <a href="#"><div>Consoles Parts</div></a>
+                    <div><a href="products.php?search=console others"><b>Others</b></a></div>
+                    <a href="products.php?search=Old Consoles"><div>Old Consoles</div></a>
+                    <a href="products.php?search=Other Accessories console"><div>Other Accessories</div></a>
+                    <a href="products.php?search= Portable Consoles"><div>Portable Consoles</div></a>
+                    <a href="products.php?search=Consoles Parts"><div>Consoles Parts</div></a>
                   </div>
 
 
@@ -275,7 +275,7 @@ elseif (isset($_POST['signInButton'])) {
           </div>
         </li>
         <li class="navPages-list-icons">
-          <a href="#">
+          <a href="products.php?search=computers">
             Computers&nbsp;
             <lord-icon
                     src="https://cdn.lordicon.com/rmkahxvq.json"
@@ -348,7 +348,7 @@ elseif (isset($_POST['signInButton'])) {
 
 
         <li class="navPages-list-icons">
-          <a href="#">
+          <a href="products.php?search=cards">
             Cards&nbsp;
             <lord-icon
                     src="https://cdn.lordicon.com/rmkahxvq.json"
@@ -379,7 +379,7 @@ elseif (isset($_POST['signInButton'])) {
         </li>
 
         <li class="navPages-list-icons">
-          <a href="#">
+          <a href="products.php?search=Accessories">
             Accessories&nbsp;
             <lord-icon
                     src="https://cdn.lordicon.com/rmkahxvq.json"
