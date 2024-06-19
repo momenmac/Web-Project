@@ -293,42 +293,42 @@ elseif (isset($_POST['signInButton'])) {
                 <div class="navPages-hidden-container-inside-top">
                   <div class="col1">
                     <div><a href="#"><b>Hardware</b></a></div>
-                    <a href="#"><div>Computers CPU</div></a>
-                    <a href="#"><div>Motherboards</div></a>
-                    <a href="#"><div>Graphics Cards</div></a>
-                    <a href="#"><div>Memories</div></a>
-                    <a href="#"><div>Hard Drives</div></a>
-                    <a href="#"><div>Power Supplies</div></a>
+                    <a href="products.php?search=cpu"><div>Computers CPU</div></a>
+                    <a href="products.php?search=motherboards"><div>Motherboards</div></a>
+                    <a href="products.php?search=graphics cards"><div>Graphics Cards</div></a>
+                    <a href="products.php?search=memories"><div>Memories</div></a>
+                    <a href="products.php?search=hard drives"><div>Hard Drives</div></a>
+                    <a href="products.php?search=power supplies"><div>Power Supplies</div></a>
 
                   </div>
 
                   <div class="col1">
                     <div><a href="#"><b>Case Parts</b></a></div>
-                    <a href="#"><div>Cases</div></a>
-                    <a href="#"><div>CPU Coolers</div></a>
-                    <a href="#"><div>GPU Coolers</div></a>
-                    <a href="#"><div>RGB Lights</div></a>
-                    <a href="#"><div>Case FANS</div></a>
+                    <a href="products.php?search=cases"><div>Cases</div></a>
+                    <a href="products.php?search=cpu cooler"><div>CPU Coolers</div></a>
+                    <a href="products.php?search=gpu cooler"><div>GPU Coolers</div></a>
+                    <a href="products.php?search=rgb lights"><div>RGB Lights</div></a>
+                    <a href="products.php?search=case fans"><div>Case FANS</div></a>
 
                   </div>
 
                   <div class="col1">
-                    <div><a href="#"><b>PCs & Monitors</b></a></div>
-                    <a href="#"><div>Desktops</div></a>
-                    <a href="#"><div>Workstations</div></a>
-                    <a href="#"><div>Laptops</div></a>
-                    <a href="#"><div>Tablets</div></a>
-                    <a href="#"><div>Monitors</div></a>
+                    <div><a href="products.php?search=monitors"><b>PCs & Monitors</b></a></div>
+                    <a href="products.php?search=desktops"><div>Desktops</div></a>
+                    <a href="products.php?search=workstation"><div>Workstations</div></a>
+                    <a href="products.php?search=laptop"><div>Laptops</div></a>
+                    <a href="products.php?search=tablet"><div>Tablets</div></a>
+                    <a href="products.php?search=monitors"><div>Monitors</div></a>
                   </div>
 
 
                   <div class="col1">
                     <div><a href="#"><b>Accessories</b></a></div>
-                    <a href="#"><div>Mouses</div></a>
-                    <a href="#"><div>Keyboards</div></a>
-                    <a href="#"><div>Headsets</div></a>
-                    <a href="#"><div>Microphones</div></a>
-                    <a href="#"><div>Speakers</div></a>
+                    <a href="products.php?search=mouses"><div>Mouses</div></a>
+                    <a href="products.php?search=keyboards"><div>Keyboards</div></a>
+                    <a href="products.php?search=headsets"><div>Headsets</div></a>
+                    <a href="products.php?search=microphones"><div>Microphones</div></a>
+                    <a href="products.php?search=speakers"><div>Speakers</div></a>
                   </div>
 
 
@@ -397,37 +397,37 @@ elseif (isset($_POST['signInButton'])) {
                 <div class="navPages-hidden-container-inside-top">
                   <div class="col1">
                     <div><a href="#"><b>Office</b></a></div>
-                    <a href="#"><div>Desks</div></a>
-                    <a href="#"><div>Chairs</div></a>
-                    <a href="#"><div>Printers</div></a>
-                    <a href="#"><div>Routers</div></a>
-                    <a href="#"><div>Bags</div></a>
+                    <a href="products.php?search=desks"><div>Desks</div></a>
+                    <a href="products.php?search=chairs"><div>Chairs</div></a>
+                    <a href="products.php?search=printers"><div>Printers</div></a>
+                    <a href="products.php?search=routers"><div>Routers</div></a>
+                    <a href="products.php?search=bags"><div>Bags</div></a>
                   </div>
 
                   <div class="col1">
                     <div><a href="#"><b>Phones</b></a></div>
-                    <a href="#"><div>Chargers</div></a>
-                    <a href="#"><div>Cases</div></a>
-                    <a href="#"><div>Headphones</div></a>
-                    <a href="#"><div>Car phone Accessories</div></a>
+                    <a href="products.php?search=charger"><div>Chargers</div></a>
+                    <a href="products.php?search=cases"><div>Cases</div></a>
+                    <a href="products.php?search=headphones"><div>Headphones</div></a>
+                    <a href="products.php?search=car"><div>Car phone Accessories</div></a>
                   </div>
 
                   <div class="col1">
                     <div><a href="#"><b>PC Accessories</b></a></div>
-                    <a href="#"><div>UPS</div></a>
-                    <a href="#"><div>External Cables</div></a>
-                    <a href="#"><div>External Hard Drives</div></a>
-                    <a href="#"><div>Drawing Boards</div></a>
-                    <a href="#"><div>Adapters & Hubs</div></a>
+                    <a href="products.php?search=ups"><div>UPS</div></a>
+                    <a href="products.php?search=external cables"><div>External Cables</div></a>
+                    <a href="products.php?search=hard drives"><div>External Hard Drives</div></a>
+                    <a href="products.php?search=drawing boards"><div>Drawing Boards</div></a>
+                    <a href="products.php?search=adapters"><div>Adapters & Hubs</div></a>
                   </div>
 
 
                   <div class="col1">
                     <div><a href="#"><b>Others</b></a></div>
-                    <a href="#"><div>TVs</div></a>
-                    <a href="#"><div>Mounts & Arms</div></a>
-                    <a href="#"><div>Cameras</div></a>
-                    <a href="#"><div>Software</div></a>
+                    <a href="products.php?search=tv"><div>TVs</div></a>
+                    <a href="products.php?search=mounts"><div>Mounts & Arms</div></a>
+                    <a href="products.php?search=cameras"><div>Cameras</div></a>
+                    <a href="products.php?search=software"><div>Software</div></a>
                   </div>
 
 
