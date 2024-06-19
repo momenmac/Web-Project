@@ -238,11 +238,26 @@ include ("wishlistPanel.php");
             </div>
             <form method="post" action="cart.php">
             <div class="row mt-4 d-flex align-items-center">
-                <div class="col-sm-6 order-md-2 text-right" >
-                    <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5 buttons_in_cart" style="background-color: var(--yellow); border: none">Checkout</a>
-                    <button type="submit" name="clearCart" class="btn btn-primary mb-4 btn-lg pl-5 pr-5 buttons_in_cart" style="background-color: var(--secondary); border: none; ">Clear Cart</button>
-
+                <div class="col-sm-6 order-md-2 text-right">
+                    <a href="#" class="btn btn-primary mb-4 btn-lg pl-5 pr-5 buttons_in_cart checkout-button" style="background-color: var(--yellow); border: none">Checkout</a>
+                    <button type="submit" name="clearCart" class="btn btn-primary mb-4 btn-lg pl-5 pr-5 buttons_in_cart" style="background-color: var(--secondary); border: none;">Clear Cart</button>
                 </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.querySelector('.checkout-button').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            console.log("Button clicked. Redirecting...");
+                            <?php if (!isset($_SESSION['username_id'])): ?>
+                            console.log("User not logged in. Redirecting to signup.");
+                            window.location.href = 'signup.php';
+                            <?php else: ?>
+                            console.log("User logged in. Redirecting to payment.");
+                            window.location.href = 'payment.php';
+                            <?php endif; ?>
+                        });
+                    });
+                </script>
                 <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
                     <a href="javascript:contShopping()">
                         <i class="fas fa-arrow-left mr-2"></i> Continue Shopping</a>

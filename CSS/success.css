@@ -1,0 +1,50 @@
+/* success.css */
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.order-number {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.confirmation-message {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-lg {
+    padding: 15px 25px;
+}
