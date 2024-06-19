@@ -108,15 +108,14 @@ iframe {
 /*Contact US*/
 
 #contact-us {
+    color: var(--primary);
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #f9f9f9;
 }
-
 #contact-us h1,
 #contact-us h3 {
     text-align: center;
-    color: #333;
 }
 
 #contact-us p {

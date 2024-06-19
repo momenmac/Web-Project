@@ -4,6 +4,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+function redirect($page) {
+    header("Location: ../index.php?page=$page");
+    exit;
+}
 
 if (isset($_POST['addProduct'])) {
     $productName = $_POST['productName'];
@@ -37,12 +41,10 @@ if (isset($_POST['addProduct'])) {
     }
 
     if ($conn->query($query) === TRUE) {
-        echo "New product added successfully";
+        redirect('products');
     } else {
         echo "Error: " . $query . "<br>" . $conn->error;
     }
-
-    $conn->close();
 }
 
 // Edit Product
@@ -85,12 +87,10 @@ if (isset($_POST['editProduct'])) {
     $query .= " WHERE product_id='$productId'";
 
     if ($conn->query($query) === TRUE) {
-        echo "Product updated successfully";
+        redirect('products');
     } else {
         echo "Error: " . $query . "<br>" . $conn->error;
     }
-
-    $conn->close();
 }
 
 // Delete Product
@@ -99,12 +99,11 @@ if (isset($_GET['delete_product'])) {
 
     $query = "DELETE FROM products WHERE product_id='$id'";
     if ($conn->query($query) === TRUE) {
-        header("Location: ../index.php?page=products");
+        redirect('products');
     } else {
         echo "Error: " . $query . "<br>" . $conn->error;
     }
 }
-
 
 // Delete Order
 if (isset($_GET['delete_order'])) {
@@ -112,7 +111,7 @@ if (isset($_GET['delete_order'])) {
 
     $query = "DELETE FROM orders WHERE id='$id'";
     if ($conn->query($query) === TRUE) {
-        header("Location: ../index.php?page=orders");
+        redirect('orders');
     } else {
         echo "Error: " . $query . "<br>" . $conn->error;
     }
@@ -122,13 +121,53 @@ if (isset($_GET['delete_order'])) {
 if (isset($_GET['delete_user'])) {
     $id = $_GET['delete_user'];
 
-    $query = "DELETE FROM users WHERE id='$id'";
+    $query = "DELETE FROM users WHERE user_id='$id'";
     if ($conn->query($query) === TRUE) {
-        header("Location: ../index.php?page=users");
+        redirect('users');
     } else {
         echo "Error: " . $query . "<br>" . $conn->error;
     }
 }
 
+// Add User
+if (isset($_POST['addUser'])) {
+    $userName = $_POST['userName'];
+    $userEmail = $_POST['userEmail'];
+    $userPassword = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users (user_name, user_email, user_password) VALUES ('$userName', '$userEmail', '$userPassword')";
+
+    if ($conn->query($query) === TRUE) {
+        redirect('users');
+    } else {
+        echo "Error: " . $query . "<br>" . $conn->error;
+    }
+}
+
+// Edit User
+if (isset($_POST['editUser'])) {
+    $userId = $_POST['userId'];
+    $userName = $_POST['userName'];
+    $userEmail = $_POST['userEmail'];
+    $userPassword = !empty($_POST['userPassword']) ? password_hash($_POST['userPassword'], PASSWORD_DEFAULT) : null;
+
+    $query = "UPDATE users SET 
+        user_name='$userName', 
+        user_email='$userEmail'";
+
+    if ($userPassword) {
+        $query .= ", user_password='$userPassword'";
+    }
+
+    $query .= " WHERE user_id='$userId'";
+
+    if ($conn->query($query) === TRUE) {
+        redirect('users');
+    } else {
+        echo "Error: " . $query . "<br>" . $conn->error;
+    }
+}
+
+// Close the connection once at the end
 $conn->close();
 ?>
