@@ -295,7 +295,7 @@ include ("wishlistPanel.php");
                         <div class="badge">Sale</div>
                         <?php }?>
                         <div class="product-tumb">
-                            <img src="../Server/ProductsImages/<?php echo $row['product_image']?>" alt="">
+                            <img src="../Admin/ProductsImages/<?php echo $row['product_image']?>" alt="">
                         </div>
                         <div class="product-details">
                             <span class="product-catagory"><?php echo $row['product_category']?></span>

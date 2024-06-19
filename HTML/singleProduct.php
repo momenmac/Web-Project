@@ -128,7 +128,7 @@ include('header.php');
             ?>
         <!-- Left Column / Headphones Image -->
         <div class="left-column">
-            <img data-image="red" class="active" src="../Server/ProductsImages/<?php echo $row['product_image']?>" alt="">
+            <img data-image="red" class="active" src="../Admin/ProductsImages/<?php echo $row['product_image']?>" alt="">
         </div>
 
 
@@ -241,7 +241,7 @@ include('header.php');
                                 <div class="badge">Sale</div>
                             <?php }?>
                             <div class="product-tumb">
-                                <img src="../Server/ProductsImages/<?php echo $row['product_image']?>" alt="">
+                                <img src="../Admin/ProductsImages/<?php echo $row['product_image']?>" alt="">
                             </div>
                             <div class="product-details">
                                 <span class="product-catagory"><?php echo $row['product_category']?></span>

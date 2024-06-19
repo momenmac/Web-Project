@@ -151,7 +151,7 @@ include ("wishlistPanel.php");
                         <td data-th="Product">
                             <div class="row">
                                 <div class="col-md-3 text-left">
-                                    <img src="../Admin/ProductsImages/<?php echo $item['product_image']?>" style="padding: 10px" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                    <img src="../Server/ProductsImages/<?php echo $item['product_image']?>" style="padding: 10px" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                                 </div>
                                 <div class="col-md-9 text-left mt-sm-2">
                                     <a href="singleProduct.php?product_id=<?php echo $item['product_id']?>"><h4 style="color: black"><?php echo $item['product_name']?></h4></a>

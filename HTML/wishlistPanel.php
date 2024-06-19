@@ -27,7 +27,7 @@ if (!isset($_SESSION)) {
                 ?>
                 <div class="product-in-cart">
                     <div class="product-in-cart-left">
-                        <img src="../Server/ProductsImages/<?php echo $item['product_image']?>" alt="">
+                        <img src="../Admin/ProductsImages/<?php echo $item['product_image']?>" alt="">
                     </div>
                     <div class="product-name-in-cart">
                         <a href="category.php?category=<?php echo $item['product_category'];?>" ><div style="color: #0a6cdc; margin-top: 15px; font-size: 11px"><?php echo $item['product_category'];?></div></a>
