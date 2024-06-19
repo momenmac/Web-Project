@@ -32,7 +32,7 @@ include ('server/connection.php');
                         <td>{$row['order_status']}</td>
                         <td>{$row['order_date']}</td>
                         <td>
-                            <a href='orderDetails.php?order_id={$row['order_id']}' class='btn btn-info btn-sm'>View</a>
+                            <a href='pages/orderDetails.php?order_id={$row['order_id']}' class='btn btn-info btn-sm'>View</a>
                             <a href='server/functions.php?delete_order={$row['order_id']}' class='btn btn-danger btn-sm'>Delete</a>
                         </td>
                     </tr>";

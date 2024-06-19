@@ -8,7 +8,7 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    background: #333;
+    background: #161880;
     padding-top: 60px;
 }
 
@@ -34,7 +34,7 @@ body {
 }
 
 .sidebar ul li a:hover {
-    background: #575757;
+    background: #161880;
 }
 
 .main-content {
