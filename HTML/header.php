@@ -368,7 +368,7 @@ elseif (isset($_POST['signInButton'])) {
                   <img src="../IMG/cards3.jpg" onclick="window.location.href = 'products.php?search=Nintendo cards';">
                   <img src="../IMG/cards4.jpg" onclick="window.location.href = 'products.php?search=Google store cards';">
                   <img src="../IMG/cards5.jpg" onclick="window.location.href = 'products.php?search=Itunes cards';">
-                  <img src="../IMG/cards6.jpg" onclick="window.location.href = 'aproducts.php?search=Steam cards';">
+                  <img src="../IMG/cards6.jpg" onclick="window.location.href = 'products.php?search=Steam cards';">
                   <img src="../IMG/cards7.jpg" onclick="window.location.href = 'products.php?search=Amazon cards';">
                   <img src="../IMG/cards8.jpg" onclick="window.location.href = 'products.php?search=other cards';">
 
