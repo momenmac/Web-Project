@@ -42,7 +42,7 @@ Computers World is an online store built with PHP, MySQL, HTML, CSS, and JavaScr
 ---
 ### Video Preview
 
-[![Watch the demo](screenshot.png)](https://www.youtube.com/watch?v=hLFWM5bls1c)
+[![Watch the demo](Screenshot.png)](https://www.youtube.com/watch?v=hLFWM5bls1c)
 
 ---
 
